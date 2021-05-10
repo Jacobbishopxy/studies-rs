@@ -1,5 +1,13 @@
 [workspace]
 
 members = [
-    "holodeck"
+    "holodeck",
+    "aar-backend",
+    "aar-frontend-handlebars",
+    "aar-frontend-wasm",
 ]
+
+resolver = "2"
+
+[profile.dev]
+split-debuginfo = "unpacked"
