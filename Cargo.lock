@@ -21,6 +21,7 @@ dependencies = [
  "async-graphql",
  "async-graphql-actix-web",
  "rbatis",
+ "serde",
 ]
 
 [[package]]
