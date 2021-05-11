@@ -5,6 +5,7 @@
 ## To read
 
 - [GraphQL in Rust](https://romankudryashov.com/blog/2020/12/graphql-rust/#_conclusion)
+- [GRPC in Rust](https://romankudryashov.com/blog/2021/04/grpc-rust/)
 
 ## To learn
 
