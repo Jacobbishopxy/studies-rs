@@ -5,6 +5,7 @@ members = [
     "aar-backend",
     "aar-frontend-handlebars",
     "aar-frontend-wasm",
+    "ads",
 ]
 
 resolver = "2"

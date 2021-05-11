@@ -8,13 +8,10 @@ Rust 有 actix，rocket，tide，warp 等等 web 框架，它们各有[优劣](h
 
 ## 依赖
 
-```toml
-[dependencies]
-tokio = { version = "1", features = ["full"] }      // warp 的依赖，项目中需要使用其类型、测试宏等
-warp = "0.3"                                        // web 框架
-serde = { version = "1", features = ["derive"]}     // 序列化与反序列化
-serde_json = "1.0"                                  // 解析 JSON string
-```
+- tokio：warp 的依赖，项目中需要使用其类型、测试宏等
+- warp：web 框架
+- serde：序列化与反序列化
+- serde_json：解析 JSON string
 
 ## 设计
 

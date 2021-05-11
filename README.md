@@ -2,6 +2,7 @@
 
 - [holodeck](./holodeck/README.md)
 - [arr-backend](./arr-backend/README.md)
+- [ads](./ads/README.md)
 
 ## To read
 
