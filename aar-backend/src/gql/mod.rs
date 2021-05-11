@@ -3,15 +3,15 @@ pub mod queries;
 
 use actix_web::{web, HttpResponse, Result};
 use async_graphql::http::{playground_source, GraphQLPlaygroundConfig};
-use async_graphql::{EmptyMutation, EmptySubscription, Schema};
+use async_graphql::{EmptySubscription, Schema};
 use async_graphql_actix_web::{Request, Response};
 
 use crate::dbs::mysql::my_pool;
+use crate::gql::mutations::MutationRoot;
 use crate::gql::queries::QueryRoot;
 use crate::util::constant::CFG;
 
-type ActixSchema =
-    Schema<queries::QueryRoot, async_graphql::EmptyMutation, async_graphql::EmptySubscription>;
+type ActixSchema = Schema<QueryRoot, MutationRoot, async_graphql::EmptySubscription>;
 
 pub async fn build_schema() -> ActixSchema {
     // 获取 mysql 数据池后，可以将其增加到：
@@ -20,7 +20,7 @@ pub async fn build_schema() -> ActixSchema {
     // 3. 使用 lazy-static.rs
     let my_pool = my_pool().await;
 
-    Schema::build(QueryRoot, EmptyMutation, EmptySubscription)
+    Schema::build(QueryRoot, MutationRoot, EmptySubscription)
         .data(my_pool)
         .finish()
 }
