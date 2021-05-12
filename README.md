@@ -3,6 +3,11 @@
 - [holodeck](./holodeck/README.md)
 - [arr-backend](./arr-backend/README.md)
 - [ads](./ads/README.md)
+- [sas](./sas/README.md)
+
+## To test
+
+- [web-cors](https://github.com/actix/examples/tree/master/security/web-cors)
 
 ## To read
 

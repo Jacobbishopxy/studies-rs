@@ -3,3 +3,4 @@
 *.code-workspace
 
 aar-backend/.env
+sas/.env
