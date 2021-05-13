@@ -14,6 +14,9 @@ pub struct UserData {
     pub password: String,
 }
 
+/// 注册用户的流程与邀请注册类似。
+/// 客户端在特定的 path 上发送数据，我们验证 invitation 后从 plain text 上创建一个哈希密码，
+/// 并存储于数据库中，最后返回 `SlimUser` 的 JSON。
 pub async fn register_user(
     invitation_id: web::Path<String>,
     user_data: web::Json<UserData>,

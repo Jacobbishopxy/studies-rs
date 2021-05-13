@@ -30,7 +30,6 @@ pub fn send_invitation(invitation: &Invitation) -> Result<(), ServiceError> {
     // invitation email 里的接收者
     let recipient: Recipient = invitation.email.as_str().into();
 
-    // 完成 email 的细节
     let email_body = format!(
         "
         Please click on the link below to complete registration. <br/>
@@ -44,6 +43,13 @@ pub fn send_invitation(invitation: &Invitation) -> Result<(), ServiceError> {
             .format("%I:%M %p %A, %-d %B, %C%y")
             .to_string()
     );
+
+    // 完成 email 的细节
+    email
+        .add_recipient(recipient)
+        .options(options)
+        .subject("You have been invited to join Simple-Auth-Server Rust")
+        .html(email_body);
 
     let result = tm.send(&email);
 

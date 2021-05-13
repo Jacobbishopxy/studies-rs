@@ -3173,7 +3173,6 @@ dependencies = [
  "serde_derive",
  "serde_json",
  "sparkpost",
- "time 0.2.26",
  "uuid",
 ]
 

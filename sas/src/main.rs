@@ -13,7 +13,7 @@ use actix_web::{middleware, web, App, HttpServer};
 use diesel::prelude::*;
 use diesel::r2d2::{self, ConnectionManager};
 
-use handlers::{invitation_handler, register_handler};
+use handlers::{auth_handler, invitation_handler, register_handler};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -51,21 +51,22 @@ async fn main() -> std::io::Result<()> {
             .data(web::JsonConfig::default().limit(4096))
             // 所有路径都归在 `/api/` route 下
             .service(
-                web::scope("/api").service(
-                    web::resource("/invitation")
-                        .route(web::post().to(invitation_handler::post_invitation)),
-                ),
+                web::scope("/api")
+                    .service(
+                        web::resource("/invitation")
+                            .route(web::post().to(invitation_handler::post_invitation)),
+                    )
+                    .service(
+                        web::resource("/register/{invitation_id}")
+                            .route(web::post().to(register_handler::register_user)),
+                    )
+                    .service(
+                        web::resource("/auth")
+                            .route(web::post().to(auth_handler::login))
+                            .route(web::delete().to(auth_handler::logout))
+                            .route(web::get().to(auth_handler::get_me)),
+                    ),
             )
-            .service(
-                web::resource("/register/{invitation_id}")
-                    .route(web::post().to(register_handler::register_user)),
-            )
-        // .service(
-        //     web::resource("/auth")
-        //         .route(web::post().to(auth_handler::login))
-        //         .route(web::delete().to(auth_handler::logout))
-        //         .route(web::get().to(auth_handler::get_me)),
-        // ),
     })
     .bind("127.0.0.1:3000")?
     .run()

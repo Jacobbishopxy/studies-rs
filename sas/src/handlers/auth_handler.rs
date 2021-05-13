@@ -1,4 +1,5 @@
-use std::convert::identity;
+//! 构建 Auth 的意义在于拥有一种方式来验证从 authenticated client 发送而来的请求。
+//! Actix-web 拥有有一个 `FromRequest` 特性可被任何类型实现并使用，其目的在于提取请求中的数据。
 
 use actix_identity::Identity;
 use actix_web::{
@@ -14,6 +15,9 @@ use crate::models::{Pool, SlimUser, User};
 use crate::schema;
 use crate::utils::verify;
 
+/// 由 client 发送包含 email 和 password 的结构体
+/// 使用 email 来提取数据库中的用户，使用 verify 函数来匹配密码
+/// 如果全部通过，由 `id.remember(serialized_user)` 设置 cookie
 #[derive(Debug, Deserialize)]
 pub struct AuthData {
     pub email: String,
@@ -29,8 +33,8 @@ impl FromRequest for LoggedUser {
     type Future = Ready<Result<LoggedUser, Error>>;
 
     fn from_request(req: &HttpRequest, payload: &mut Payload) -> Self::Future {
-        if let Ok(Identity) = Identity::from_request(req, payload).into_inner() {
-            if let Some(user_json) = Identity.identity() {
+        if let Ok(identity) = Identity::from_request(req, payload).into_inner() {
+            if let Some(user_json) = identity.identity() {
                 if let Ok(user) = serde_json::from_str(&user_json) {
                     return ok(user);
                 }
