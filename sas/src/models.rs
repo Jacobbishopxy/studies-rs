@@ -45,3 +45,14 @@ where
         }
     }
 }
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct SlimUser {
+    pub email: String,
+}
+
+impl From<User> for SlimUser {
+    fn from(user: User) -> Self {
+        SlimUser { email: user.email }
+    }
+}
