@@ -41,7 +41,7 @@ async fn main() -> std::io::Result<()> {
             // 启用 logger
             .wrap(middleware::Logger::default())
             .wrap(IdentityService::new(
-                CookieIdentityPolicy::new(utils::SECRET_KEY.as_bytes())
+                CookieIdentityPolicy::new(utils::CFG.get("SECRET_KEY").unwrap().as_bytes())
                     .name("auth")
                     .path("/")
                     .domain(domain.as_str())

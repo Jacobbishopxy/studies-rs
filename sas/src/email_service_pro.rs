@@ -101,26 +101,26 @@ impl InsecureEmailHelper {
     }
 }
 
-// #[test]
-// fn insecure_email_helper_test() {
-//     let username = "username@example.com".to_string();
-//     let password = "password".to_string();
-//     let host = "mail.example.com".to_string();
-//     let port = 25;
-//     let mut foo = InsecureEmailHelper::new(username.clone(), password, host, port);
+#[test]
+fn insecure_email_helper_test() {
+    let username = "username@example.com".to_string();
+    let password = "password".to_string();
+    let host = "mail.example.com".to_string();
+    let port = 25;
+    let mut foo = InsecureEmailHelper::new(username.clone(), password, host, port);
 
-//     foo.add_subject("Invitation from Rust!".to_string());
-//     foo.add_body("test 1".to_string());
-//     foo.add_body("test 2".to_string());
+    foo.add_subject("Invitation from Rust!".to_string());
+    foo.add_body("test 1".to_string());
+    foo.add_body("test 2".to_string());
 
-//     foo.add_sender(username);
-//     foo.add_recipients(vec!["someone@example.com".to_string()]);
+    foo.add_sender(username);
+    foo.add_recipients(vec!["someone@example.com".to_string()]);
 
-//     foo.send().expect("233");
+    foo.send().expect("233");
 
-//     foo.add_subject("Invitation from Rust! Again!".to_string());
-//     foo.add_body("test 3".to_string());
-//     foo.add_body("test 4".to_string());
+    foo.add_subject("Invitation from Rust! Again!".to_string());
+    foo.add_body("test 3".to_string());
+    foo.add_body("test 4".to_string());
 
-//     foo.send().expect("111");
-// }
+    foo.send().expect("111");
+}
