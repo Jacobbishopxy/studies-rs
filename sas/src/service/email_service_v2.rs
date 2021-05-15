@@ -1,6 +1,6 @@
-use crate::errors::ServiceError;
-use crate::models::{InsecureEmailHelper, Invitation};
-use crate::utils::CFG;
+use crate::error::ServiceError;
+use crate::model::Invitation;
+use crate::util::{InsecureEmailHelper, CFG};
 
 pub fn send_invitation(invitation: &Invitation) -> Result<(), ServiceError> {
     let username = CFG.get("SMTP_USERNAME").unwrap().to_string();

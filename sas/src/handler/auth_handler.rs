@@ -10,10 +10,10 @@ use diesel::PgConnection;
 use futures::future::{err, ok, Ready};
 use serde::Deserialize;
 
-use crate::errors::ServiceError;
-use crate::models::{Pool, SlimUser, User};
+use crate::error::ServiceError;
+use crate::model::{Pool, SlimUser, User};
 use crate::schema;
-use crate::utils::verify;
+use crate::util::verify;
 
 /// 由 client 发送包含 email 和 password 的结构体
 /// 使用 email 来提取数据库中的用户，使用 verify 函数来匹配密码

@@ -1,10 +1,9 @@
-mod email_service;
-mod email_service_v2;
-mod errors;
-mod handlers;
-mod models;
+mod error;
+mod handler;
+mod model;
 mod schema;
-mod utils;
+mod service;
+mod util;
 
 #[macro_use]
 extern crate diesel;
@@ -14,7 +13,7 @@ use actix_web::{middleware, web, App, HttpServer};
 use diesel::prelude::*;
 use diesel::r2d2::{self, ConnectionManager};
 
-use handlers::{auth_handler, invitation_handler, register_handler};
+use handler::{auth_handler, invitation_handler, register_handler};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -29,7 +28,7 @@ async fn main() -> std::io::Result<()> {
 
     // 创建数据库连接池
     let manager = ConnectionManager::<PgConnection>::new(database_url);
-    let pool: models::Pool = r2d2::Pool::builder()
+    let pool: model::Pool = r2d2::Pool::builder()
         .build(manager)
         .expect("Failed to create pool.");
     let domain: String = std::env::var("DOMAIN").unwrap_or_else(|_| "localhost".to_string());
@@ -41,7 +40,7 @@ async fn main() -> std::io::Result<()> {
             // 启用 logger
             .wrap(middleware::Logger::default())
             .wrap(IdentityService::new(
-                CookieIdentityPolicy::new(utils::CFG.get("SECRET_KEY").unwrap().as_bytes())
+                CookieIdentityPolicy::new(util::CFG.get("SECRET_KEY").unwrap().as_bytes())
                     .name("auth")
                     .path("/")
                     .domain(domain.as_str())

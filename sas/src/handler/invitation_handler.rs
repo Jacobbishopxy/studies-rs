@@ -2,10 +2,10 @@ use actix_web::{error::BlockingError, web, HttpResponse};
 use diesel::{prelude::*, PgConnection};
 use serde::Deserialize;
 
-use crate::email_service_v2;
-use crate::errors::ServiceError;
-use crate::models::{Invitation, Pool};
+use crate::error::ServiceError;
+use crate::model::{Invitation, Pool};
 use crate::schema;
+use crate::service::email_service_v2;
 
 #[derive(Deserialize)]
 pub struct InvitationData {

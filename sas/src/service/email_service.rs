@@ -1,5 +1,5 @@
-use crate::errors::ServiceError;
-use crate::models::Invitation;
+use crate::error::ServiceError;
+use crate::model::Invitation;
 use sparkpost::transmission::{
     EmailAddress, Message, Options, Recipient, Transmission, TransmissionResponse,
 };

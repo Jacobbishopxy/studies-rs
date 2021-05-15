@@ -2,10 +2,10 @@ use actix_web::{error::BlockingError, web, HttpResponse};
 use diesel::{insert_into, prelude::*};
 use serde::Deserialize;
 
-use crate::errors::ServiceError;
-use crate::models::{Invitation, Pool, SlimUser, User};
+use crate::error::ServiceError;
+use crate::model::{Invitation, Pool, SlimUser, User};
 use crate::schema;
-use crate::utils::hash_password;
+use crate::util::hash_password;
 
 // UserData 用于从客户端的一个 post 请求中提取数据
 #[derive(Debug, Deserialize)]
