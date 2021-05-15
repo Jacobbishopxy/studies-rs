@@ -2,6 +2,12 @@
 
 [原文地址](https://gill.net.in/posts/auth-microservice-rust-actix-web1.0-diesel-complete-tutorial/)
 
+## 前置
+
+```sh
+cargo install diesel_cli --no-default-features --features postgres
+```
+
 ## 依赖
 
 - actix-identity：
@@ -55,6 +61,8 @@ curl --request POST \
   --data '{"email":"name@domain.com", "password":"password"}'
 ```
 
+ps: `/register`后的 id 为邀请测试成功后的返回
+
 - 登陆测试
 
 ```sh
@@ -75,7 +83,7 @@ date: Sun, 28 Oct 2018 12:36:43 GMT
 
 ```sh
 curl -i --request DELETE \
-  --url http://localhost:3000/auth
+  --url http://localhost:3000/api/auth
 ```
 
 ```null
@@ -89,7 +97,7 @@ date: Sat, 27 Oct 2018 13:01:52 GMT
 
 ```sh
 curl -i --request GET \
-  --url http://localhost:3000/auth \
+  --url http://localhost:3000/api/auth \
   --cookie auth=HdS0iPKTBL/4MpTmoUKQ5H7wft5kP7OjP6vbyd05Ex5flLvAkKd+P2GchG1jpvV6p9GQtzPEcg==
 ```
 

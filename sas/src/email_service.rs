@@ -10,6 +10,7 @@ lazy_static::lazy_static! {
 
 /// 该函数并没有任何返回，而真实 app 中可以不再是向 terminal 打印信息。
 /// todo: 将 sparkpost 替换成别的 email-sender crate
+#[allow(dead_code)]
 pub fn send_invitation(invitation: &Invitation) -> Result<(), ServiceError> {
     let tm = Transmission::new_eu(API_KEY.as_str());
     let sending_email =

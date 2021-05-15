@@ -2,7 +2,7 @@ use actix_web::{error::BlockingError, web, HttpResponse};
 use diesel::{prelude::*, PgConnection};
 use serde::Deserialize;
 
-use crate::email_service;
+use crate::email_service_v2;
 use crate::errors::ServiceError;
 use crate::models::{Invitation, Pool};
 use crate::schema;
@@ -34,7 +34,7 @@ pub async fn post_invitation(
 
 fn create_invitation(eml: String, pool: web::Data<Pool>) -> Result<(), ServiceError> {
     let invitation = dbg!(query(eml, pool)?);
-    email_service::send_invitation(&invitation)
+    email_service_v2::send_invitation(&invitation)
 }
 
 /// diesel query

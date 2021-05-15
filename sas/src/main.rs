@@ -1,5 +1,5 @@
 mod email_service;
-mod email_service_pro;
+mod email_service_v2;
 mod errors;
 mod handlers;
 mod models;
