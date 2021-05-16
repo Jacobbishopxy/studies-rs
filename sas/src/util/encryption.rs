@@ -3,9 +3,11 @@ use argon2::{self, Config};
 use crate::error::ServiceError;
 use crate::util::CFG;
 
+#[allow(dead_code)]
 const SALT: &'static [u8] = b"supersecuresalt";
 
 // 警告！ 以下仅适合 Demo，在生产环境中则需要对此进行更多的研究
+#[allow(dead_code)]
 pub fn hash_password(password: &str) -> Result<String, ServiceError> {
     let secret = CFG.get("SECRET_KEY").unwrap().as_bytes();
     let config = Config {
@@ -19,6 +21,7 @@ pub fn hash_password(password: &str) -> Result<String, ServiceError> {
     })
 }
 
+#[allow(dead_code)]
 pub fn verify(hash: &str, password: &str) -> Result<bool, ServiceError> {
     let secret = CFG.get("SECRET_KEY").unwrap().as_bytes();
     argon2::verify_encoded_ext(hash, password.as_bytes(), secret, &[]).map_err(|err| {

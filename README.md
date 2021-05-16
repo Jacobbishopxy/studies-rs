@@ -14,6 +14,7 @@
 - [GraphQL in Rust](https://romankudryashov.com/blog/2020/12/graphql-rust/#_conclusion)
 - [GRPC in Rust](https://romankudryashov.com/blog/2021/04/grpc-rust/)
 - [How to use gRPC with Rust Tonic and Postgres database with examples](https://dev.to/steadylearner/how-to-use-grpc-with-rust-tonic-and-postgres-database-with-examples-3dl7)
+- [Yew Megatutorial Series' Articles](https://dev.to/davidedelpapa/series/5838)
 
 ## To learn
 
@@ -27,6 +28,7 @@
 - [rdkafka](https://github.com/fede1024/rust-rdkafka)
 - [algorithms](https://github.com/EbTech/rust-algorithms)
 - [yew](https://github.com/yewstack/yew)
+- [tonic](https://github.com/hyperium/tonic)
 
 ## Examples
 

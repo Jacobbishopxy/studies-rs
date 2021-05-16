@@ -13,6 +13,11 @@ lazy_static::lazy_static! {
         );
 
         map.insert(
+            "SECRET_LEN",
+            dotenv::var("SECRET_KEY").expect("Expected SECRET_LEN to be set in env!"),
+        );
+
+        map.insert(
             "SMTP_USERNAME",
             dotenv::var("SMTP_USERNAME").expect("Expected SMTP_USERNAME to be set in env!"),
         );
@@ -24,12 +29,12 @@ lazy_static::lazy_static! {
 
         map.insert(
             "SMTP_HOST",
-            dotenv::var("SMTP_HOST").expect("Expected SMTP_ to be set in env!"),
+            dotenv::var("SMTP_HOST").expect("Expected SMTP_HOST to be set in env!"),
         );
 
         map.insert(
             "SMTP_PORT",
-            dotenv::var("SMTP_PORT").expect("Expected SMTP_ to be set in env!"),
+            dotenv::var("SMTP_PORT").expect("Expected SMTP_PORT to be set in env!"),
         );
 
         map

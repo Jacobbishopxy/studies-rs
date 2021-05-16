@@ -25,3 +25,4 @@ sparkpost = "0.5.4"
 uuid = { version = "0.8.2", features = ["serde", "v4"] }
 lettre = "0.9"
 lettre_email = "0.9"
+ring = "0.16.20"

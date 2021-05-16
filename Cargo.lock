@@ -3484,6 +3484,7 @@ dependencies = [
  "lettre",
  "lettre_email",
  "r2d2",
+ "ring",
  "rust-argon2",
  "serde",
  "serde_derive",
