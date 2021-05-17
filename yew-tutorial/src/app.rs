@@ -1,5 +1,6 @@
 use rand::prelude::*;
 use yew::prelude::*;
+use yew::services::{ConsoleService, DialogService};
 
 pub struct App {
     counter: i64,
@@ -12,6 +13,7 @@ pub enum Msg {
     RemoveOne,
     AddOneItem,
     RemoveOneItem,
+    About,
 }
 
 impl Component for App {
@@ -30,9 +32,35 @@ impl Component for App {
         match msg {
             Msg::AddOne => self.counter += 1,
             Msg::RemoveOne => self.counter -= 1,
-            Msg::AddOneItem => self.items.push(random()),
+            Msg::AddOneItem => {
+                let added: i64 = random();
+                self.items.push(added);
+                ConsoleService::log(format!("Added {}", added).as_str());
+            }
             Msg::RemoveOneItem => {
-                self.items.pop();
+                let removed = self.items.pop();
+
+                // console 的不同等级
+                match removed {
+                    Some(x) => ConsoleService::warn(format!("Removed {}", x).as_str()),
+                    None => {
+                        ConsoleService::error("No more elements to remove!");
+                        let user_is_a_monkey = DialogService::confirm(
+                            "Are you dum? There are no more elements to remove!",
+                        );
+
+                        if user_is_a_monkey {
+                            DialogService::alert("I knew it!");
+                        } else {
+                            DialogService::alert(
+                                "Maybe it was an error, there are no more elements to remove!",
+                            );
+                        }
+                    }
+                }
+            }
+            Msg::About => {
+                DialogService::alert("Here is the about button's reaction.");
             }
         }
         true
@@ -66,6 +94,7 @@ impl Component for App {
                 <br/>
                 <div class="card">
                     <header>{"Items: "}</header>
+                    <button onclick=self.link.callback(|_| Msg::About)>{ "About" }</button>
                     <div class="card-body">
                         <table class="primary">{ for self.items.iter().map(render_item) }</table>
                     </div>

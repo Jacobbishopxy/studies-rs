@@ -42,3 +42,41 @@ rollup ./main.js --format iife --file ./pkg/bundle.js
 - *run*函数即唤起了服务，同时使其在后台运行（在命令后方添加`&`）。也正因于此我们保持进程的 PID 于一个隐藏文件*.serverpid*中。
 
 `stop.sh`获取*.serverpid*中的 PID，杀死进程。
+
+### Tutorial #3
+
+不同于教程给出的：
+
+```rs
+use yew::services::{ConsoleService, DialogService};
+
+pub struct App {
+    items: Vec<i64>,
+    link: ComponentLink<Self>,
+    console: ConsoleService,
+    dialog: DialogService,
+}
+```
+
+因为`yew`升级，不再使用函数调用的方式，如：
+
+```rs
+self.console.error("No more elements to remove!");
+self.dialog.alert("I kenw it!");
+```
+
+而是使用关联函数的方式：
+
+```rs
+ConsoleService::error("No more elements to remove!");
+DialogService::alert("I knew it!");
+```
+
+因此，`App`结构体中不再需要`console`和`dialog`成员，即保持 Tutorial #2 中的样式：
+
+```rs
+pub struct App {
+    items: Vec<i64>,
+    link: ComponentLink<Self>,
+}
+```
