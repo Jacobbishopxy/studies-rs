@@ -2,6 +2,8 @@
 #![recursion_limit = "256"]
 mod app;
 
+mod components;
+
 // 为了使用`yew::start_app`
 use wasm_bindgen::prelude::*;
 
