@@ -1,4 +1,5 @@
 // 定义一个 *app* 模块
+#![recursion_limit = "256"]
 mod app;
 
 // 为了使用`yew::start_app`
