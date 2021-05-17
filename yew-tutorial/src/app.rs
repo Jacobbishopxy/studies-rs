@@ -1,11 +1,56 @@
 use rand::prelude::*;
+use serde::{Deserialize, Serialize};
+use wasm_bindgen::prelude::*;
+use yew::format::Json;
 use yew::prelude::*;
-use yew::services::{ConsoleService, DialogService};
+use yew::services::{storage, ConsoleService, DialogService, StorageService};
+
+const KEY: &'static str = "yew.tut.database";
+
+#[wasm_bindgen(
+    inline_js = "export function refreshform(form) { document.getElementById(form).reset(); }"
+)]
+extern "C" {
+    fn refreshform(form: &str);
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Database {
+    tasks: Vec<Task>,
+}
+
+impl Database {
+    pub fn new() -> Self {
+        Database { tasks: Vec::new() }
+    }
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Task {
+    title: String,
+    description: String,
+}
+
+impl Task {
+    pub fn new() -> Self {
+        Task {
+            title: "".to_string(),
+            description: "".to_string(),
+        }
+    }
+
+    pub fn is_filled_in(&self) -> bool {
+        (self.title != "") && (self.description != "")
+    }
+}
 
 pub struct App {
     counter: i64,
     items: Vec<i64>,
     link: ComponentLink<Self>,
+    storage: StorageService,
+    database: Database,
+    temp_task: Task,
 }
 
 pub enum Msg {
@@ -14,6 +59,10 @@ pub enum Msg {
     AddOneItem,
     RemoveOneItem,
     About,
+    AddTask,
+    RemoveTask(usize),
+    SetTitle(String),
+    SetDescription(String),
 }
 
 impl Component for App {
@@ -21,10 +70,17 @@ impl Component for App {
     type Properties = ();
 
     fn create(_: Self::Properties, link: ComponentLink<Self>) -> Self {
+        let storage = StorageService::new(storage::Area::Local).unwrap();
+        let Json(database) = storage.restore(KEY);
+        let database = database.unwrap_or_else(|_| Database::new());
+
         App {
             link,
             counter: 0,
             items: vec![],
+            storage,
+            database,
+            temp_task: Task::new(),
         }
     }
 
@@ -62,6 +118,24 @@ impl Component for App {
             Msg::About => {
                 DialogService::alert("Here is the about button's reaction.");
             }
+            Msg::AddTask => {
+                if self.temp_task.is_filled_in() {
+                    self.database.tasks.push(self.temp_task.clone());
+                    self.storage.store(KEY, Json(&self.database));
+                    self.temp_task = Task::new();
+                    refreshform("taskform");
+                }
+            }
+            Msg::RemoveTask(t) => {
+                self.database.tasks.remove(t);
+                self.storage.store(KEY, Json(&self.database))
+            }
+            Msg::SetTitle(t) => {
+                self.temp_task.title = t;
+            }
+            Msg::SetDescription(d) => {
+                self.temp_task.description = d;
+            }
         }
         true
     }
@@ -85,6 +159,18 @@ impl Component for App {
             }
         };
 
+        let render_item2 = |(idx, task): (usize, &Task)| {
+            html! {
+                <>
+                    <div class="card">
+                        <header><label>{ &task.title }</label></header>
+                        <div class="card-body"><label>{ &task.description }</label></div>
+                        <footer><button onclick=self.link.callback(move |_| Msg::RemoveTask(idx))>{ "Remove" }</button></footer>
+                    </div>
+                </>
+            }
+        };
+
         html! {
             <div class="main">
                 <p>{"Counter: "} { self.counter }</p>
@@ -92,6 +178,7 @@ impl Component for App {
                 {" "}
                 <button onclick=self.link.callback(|_| Msg::RemoveOne)>{ "Remove 1" }</button>
                 <br/>
+                {"--------"}
                 <div class="card">
                     <header>{"Items: "}</header>
                     <button onclick=self.link.callback(|_| Msg::About)>{ "About" }</button>
@@ -103,6 +190,17 @@ impl Component for App {
                         {" "}
                         <button onclick=self.link.callback(|_| Msg::RemoveOneItem)>{ "Remove 1" }</button>
                     </footer>
+                </div>
+                <br/>
+                {"--------"}
+                <h2>{"Tasks: "}</h2>
+                { for self.database.tasks.iter().enumerate().map(render_item2) }
+                <div class="card">
+                    <form id="taskform">
+                        <label class="stack"><input placeholder="Title" oninput=self.link.callback(|e: InputData|  Msg::SetTitle(e.value)) /></label>
+                        <label class="stack"><textarea rows=2 placeholder="Description" oninput=self.link.callback(|e: InputData|  Msg::SetDescription(e.value))></textarea></label>
+                        <button class="stack icon-paper-plane" onclick=self.link.callback(|_|  Msg::AddTask)>{ "Add task" }</button>
+                    </form>
                 </div>
             </div>
         }

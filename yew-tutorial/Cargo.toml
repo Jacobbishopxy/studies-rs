@@ -10,3 +10,4 @@ crate-type = ["cdylib"]
 wasm-bindgen = "0.2.74"
 yew = "0.18.0"
 rand = { version = "0.7", features = ["wasm-bindgen"] }
+serde = "1.0.126"
