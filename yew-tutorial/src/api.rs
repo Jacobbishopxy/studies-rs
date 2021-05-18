@@ -21,6 +21,7 @@ impl HostIpService {
         Self {}
     }
 
+    /// 详见 README
     pub fn get_response(&mut self, callback: Callback<Result<ServerResponse, Error>>) -> FetchTask {
         let url = format!("http://api.hostip.info/get_json.php");
         let handler = move |response: Response<Json<Result<ServerResponse, Error>>>| {
