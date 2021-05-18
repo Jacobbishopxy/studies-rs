@@ -301,3 +301,5 @@ impl HostIpService {
 - 失败情况下，我们通过`anyhow!` 宏来 `emit` 包含自定义信息的错误，这里面也包含了 `status`。
 - 现在最肉的部分来了：我们为服务准备了 _Request_，作为 `GET` 请求使用 `Request::get`；传入 API 服务的 url 以及 `Nothing` 作为 body。真实世界并不是“nothing”，而是一个格式化的 body，被视为一个 no-body（因为不需要）提供给服务。
 - 最后返回 `fetch` 任务（现在可被发送了）。这个 task 我们传入了准备好的请求，以及服务器返回响应时所要调用的闭包。
+
+### Tutorial #6

@@ -1,20 +1,34 @@
 use yew::prelude::*;
 
-use crate::components::{Call, Count, Goal, Thing};
+use crate::components::{Button, Call, Count, Goal, Thing};
 
-pub struct App {}
+pub struct App {
+    link: ComponentLink<Self>,
+    counter: i32,
+}
 
-pub enum Msg {}
+pub enum Msg {
+    AddOne,
+    RemoveOne,
+}
 
 impl Component for App {
     type Message = Msg;
     type Properties = ();
 
-    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        App {}
+    fn create(_: Self::Properties, link: ComponentLink<Self>) -> Self {
+        App { link, counter: 0 }
     }
 
-    fn update(&mut self, _: Self::Message) -> ShouldRender {
+    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+        match msg {
+            Msg::AddOne => {
+                self.counter += 1;
+            }
+            Msg::RemoveOne => {
+                self.counter -= if self.counter == 0 { 0 } else { 1 };
+            }
+        }
         true
     }
 
@@ -40,6 +54,16 @@ impl Component for App {
                 <h2>{"Example #4"}</h2>
                 <br/>
                 <Call/>
+                <br/>
+                <h2>{"Example #5"}</h2>
+                <br/>
+                <div>
+                    <h1>{ "Welcome to Components" }</h1>
+                    <p>{ self.counter } </p>
+                    <Button onsignal=self.link.callback(|_| Msg::AddOne) title="+1" />
+                    {" "}
+                    <Button onsignal=self.link.callback(|_| Msg::RemoveOne) title="-1" />
+                </div>
             </div>
         }
     }
