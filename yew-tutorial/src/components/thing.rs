@@ -1,3 +1,5 @@
+//! example #2
+
 use rand::prelude::*;
 use yew::prelude::*;
 use yew::services::{ConsoleService, DialogService};

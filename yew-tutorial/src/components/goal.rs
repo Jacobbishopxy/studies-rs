@@ -1,3 +1,5 @@
+//! example #3
+
 use serde::{Deserialize, Serialize};
 use wasm_bindgen::prelude::*;
 use yew::format::Json;

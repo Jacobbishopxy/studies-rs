@@ -1,3 +1,5 @@
+//! example #1
+
 use yew::prelude::*;
 
 pub struct Count {

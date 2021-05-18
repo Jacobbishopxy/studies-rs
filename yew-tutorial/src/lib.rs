@@ -1,8 +1,8 @@
-// 定义一个 *app* 模块
 #![recursion_limit = "256"]
+mod api;
 mod app;
-
 mod components;
+mod external;
 
 // 为了使用`yew::start_app`
 use wasm_bindgen::prelude::*;
