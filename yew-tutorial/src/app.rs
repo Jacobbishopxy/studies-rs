@@ -58,7 +58,6 @@ impl Component for App {
                 <h2>{"Example #5"}</h2>
                 <br/>
                 <div>
-                    <h1>{ "Welcome to Components" }</h1>
                     <p>{ self.counter } </p>
                     <Button onsignal=self.link.callback(|_| Msg::AddOne) title="+1" />
                     {" "}

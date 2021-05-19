@@ -303,3 +303,67 @@ impl HostIpService {
 - 最后返回 `fetch` 任务（现在可被发送了）。这个 task 我们传入了准备好的请求，以及服务器返回响应时所要调用的闭包。
 
 ### Tutorial #6
+
+对于 `Component` 这个特性中六种函数的解释：
+
+1. `fn create()`
+
+   签名：`fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self`
+
+   `create`这个函数是组件的“构造函数”，它接受 props 以及一个关于组件的 link 作为参数，同时返回 `Self`。
+
+   初始化的逻辑在此。
+
+2. `fn view()`
+
+   签名：`fn view(&self) -> Html`
+
+   即使我们总是把该函数放在实现的最后，实际上它在该组件被创造之后便被执行用于渲染，否则的话用户不可能点击按钮并发送信息等等。`view()` 方法在虚拟 DOM 中渲染了组件的布局。它接受一个 `self` 的引用（通过它可以使用组件结构体中的所有字段），并返回一个虚拟的 `Html`，其通常由 `html!` 宏生成。
+
+   布局（渲染）逻辑在此。
+
+3. `fn mounted()`
+
+   签名：`fn mounted(&mut self) -> ShouldRender`
+
+   这个新方法在组件于 DOM 加载后被调用，即在 view 被渲染后，并在浏览器刷新网页前。该方法对于在渲染组件后再实现行为非常有用，例如你希望关注转移到一个按钮或者表单的字段。该方法接受 `self` 的可变引用并返回一个 `ShouldRender`，即 `true` 如果在逻辑被执行后你需要刷新该组件，这样就能在 DOM 上再次刷新，反之 `false`。 `Mounted` 是一个可选的方法，不实现它也不会造成任何影响。
+
+   后期渲染逻辑在此。
+
+4. `fn update()`
+
+   签名：`fn update(&mut self, msg: Self::Message) -> ShouldRender`
+
+   每当一个信息被触发，`update` 方法就会被调用。一个信息可以被用户在 UI（例如在按钮或者表单输入的回调函数）上触发，也可以是子组件，服务，代理（我们还未提到），或是 Futures（我们在 Fetch handling 的表单中看到过）。函数接受 `self` 的引用，以及信息用于触发更新的调用。如果由于消息处理而导致需要进行新的渲染，则其返回 `ShouldRender` 为真（ShouldRender 为 bool 的类型别名）。注意 `update` 是组件更新自身，其作为一个消息事件的响应。
+
+   信息处理在此。
+
+5. `fn change()`
+
+   签名：`fn change(&mut self, props: Self::Properties) -> ShouldRender`
+
+   每当一个父组件需要渲染其子组件时，或者改变子组件的 props 时，为了重新渲染组件，子组件的 `change` 方法会被调用。这个方法与 `update` 类似，不是接受一个信息而是接受 props。返回的也是 `ShouldRender`，这种情况保证了能在 props 改变后进行刷新（比如 text 值或者其它的改变）。`change` 是一个可选方法，不实现它也没有任何影响。实际上根元素通常是不需要该函数的。
+
+   Props 变动处理在此。
+
+6. `fn destroy()`
+
+   签名：`fn destroy(&mut self)`
+
+   该方法为组件在生命周期的最后被调用，即当组件被删除时。它接受一个 self 的可变引用，对于优雅的结束非常有用，即组件从 DOM 中被移出。该函数没有返回。该函数完全是可选的，实际上一个组件在被移除前不需要做任何事；实际上很多时候网页应用的一些组件永远不会被移出（说的不是退出网页）。
+
+   组件清理逻辑在此。
+
+优化 devops：
+
+更新 `run.sh` 与 `stop.sh`，前置条件：
+
+```sh
+npm init
+
+npm i --save-dev rollup-plugin-livereload
+
+cargo install cargo-watch
+
+cargo install thttp
+```

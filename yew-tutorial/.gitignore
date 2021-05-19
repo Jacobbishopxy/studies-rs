@@ -1,2 +1,4 @@
 
 .serverpid
+.serverpid.rollup
+/node_modules

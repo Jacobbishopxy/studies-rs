@@ -1,0 +1,14 @@
+{
+  "name": "yew-tutorial",
+  "version": "1.0.0",
+  "description": "https://github.com/davidedelpapa/yew-tutorial",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jacobbishopxy@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup-plugin-livereload": "^2.0.0"
+  }
+}
