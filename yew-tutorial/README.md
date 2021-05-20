@@ -359,11 +359,16 @@ impl HostIpService {
 更新 `run.sh` 与 `stop.sh`，前置条件：
 
 ```sh
+# 在当前目录初始化 npm 项目（package.json）
 npm init
-
+# 新增 dev 依赖，用于捆绑 js 与 wasm
 npm i --save-dev rollup-plugin-livereload
-
+# cargo 服务，用于监听文件变化
 cargo install cargo-watch
-
+# http 服务，替换掉之前 python 的 python -m "http.server"
 cargo install thttp
 ```
+
+### Tutorial #7
+
+等待 Yew 更新...

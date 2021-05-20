@@ -2,3 +2,5 @@
 .serverpid
 .serverpid.rollup
 /node_modules
+/src/js/*
+!/src/js/.gitkeep

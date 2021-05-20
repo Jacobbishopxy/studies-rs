@@ -1,4 +1,5 @@
 pub mod button;
+pub mod button_v2;
 pub mod call;
 pub mod count;
 pub mod goal;
