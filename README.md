@@ -4,6 +4,8 @@
 - [arr-backend](./arr-backend/README.md)
 - [ads](./ads/README.md)
 - [sas](./sas/README.md)
+- [yew-tutorial](./yew-tutorial/README.md)
+- [news](./news-service/README.md)
 
 ## To test
 
@@ -15,6 +17,7 @@
 - [GRPC in Rust](https://romankudryashov.com/blog/2021/04/grpc-rust/)
 - [How to use gRPC with Rust Tonic and Postgres database with examples](https://dev.to/steadylearner/how-to-use-grpc-with-rust-tonic-and-postgres-database-with-examples-3dl7)
 - [Yew Megatutorial Series' Articles](https://dev.to/davidedelpapa/series/5838)
+- [rust-playground](https://github.com/diegopacheco/rust-playground)
 
 ## To learn
 

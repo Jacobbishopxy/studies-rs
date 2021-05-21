@@ -7,7 +7,11 @@ members = [
     "aar-frontend-wasm",
     "ads",
     "sas",
-    "yew-tutorial"
+    "yew-tutorial",
+    "news-service",
+    "news-contract",
+    "news-dao",
+    "news-migrations"
 ]
 
 resolver = "2"

@@ -867,6 +867,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "barrel"
+version = "0.6.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9d67c978b1322c8031145b1f6c236fc371292f52c565bc96018b2971afcbffe1"
+
+[[package]]
 name = "base-x"
 version = "0.2.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2652,6 +2658,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "news-contract"
+version = "0.1.0"
+
+[[package]]
+name = "news-dao"
+version = "0.1.0"
+
+[[package]]
+name = "news-migrations"
+version = "0.1.0"
+dependencies = [
+ "async-std",
+ "barrel",
+ "sqlx",
+]
+
+[[package]]
+name = "news-service"
+version = "0.1.0"
+
+[[package]]
 name = "nom"
 version = "4.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3845,6 +3872,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "sqlx"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d582b9bc04ec6c03084196efc42c2226b018e9941f03ee62bd88921d500917c0"
+dependencies = [
+ "sqlx-core",
+ "sqlx-macros",
+]
+
+[[package]]
 name = "sqlx-core"
 version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3902,6 +3939,25 @@ dependencies = [
  "webpki",
  "webpki-roots",
  "whoami",
+]
+
+[[package]]
+name = "sqlx-macros"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1a40f0be97e704d3fbf059e7e3333c3735639146a72d586c5534c70e79da88a4"
+dependencies = [
+ "dotenv",
+ "either",
+ "futures",
+ "heck",
+ "proc-macro2",
+ "quote",
+ "sha2",
+ "sqlx-core",
+ "sqlx-rt",
+ "syn",
+ "url",
 ]
 
 [[package]]
