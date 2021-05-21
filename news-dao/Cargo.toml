@@ -1,0 +1,12 @@
+[package]
+name = "news-dao"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+news-contract = { path = "../news-contract" }
+actix-web = "3.3.2"
+diesel = { version = "1.4.6", features = ["postgres"] }
+uuid = { version = "0.8.2", features=["v4"] }

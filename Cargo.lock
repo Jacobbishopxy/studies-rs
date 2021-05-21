@@ -40,7 +40,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1be241f88f3b1e7e9a3fbe3b5a8a0f6915b5a1d7ee0d9a248d3376d01068cc60"
 dependencies = [
  "actix-rt 1.1.1",
- "actix_derive",
+ "actix_derive 0.5.0",
  "bitflags",
  "bytes 0.5.6",
  "crossbeam-channel 0.4.4",
@@ -56,6 +56,30 @@ dependencies = [
  "tokio-util 0.3.1",
  "trust-dns-proto",
  "trust-dns-resolver",
+]
+
+[[package]]
+name = "actix"
+version = "0.11.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "543c47e7827f8fcc9d1445bd98ba402137bfce80ee2187429de49c52b5131bd3"
+dependencies = [
+ "actix-rt 2.2.0",
+ "actix_derive 0.6.0",
+ "bitflags",
+ "bytes 1.0.1",
+ "crossbeam-channel 0.5.1",
+ "futures-core",
+ "futures-sink",
+ "futures-task",
+ "futures-util",
+ "log",
+ "once_cell",
+ "parking_lot",
+ "pin-project-lite 0.2.6",
+ "smallvec",
+ "tokio 1.5.0",
+ "tokio-util 0.6.6",
 ]
 
 [[package]]
@@ -349,7 +373,7 @@ version = "3.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f6edf3c2693e2a8c422800c87ee89a6a4eac7dd01109bc172a1093ce1f4f001"
 dependencies = [
- "actix",
+ "actix 0.10.0",
  "actix-codec",
  "actix-http",
  "actix-web",
@@ -375,6 +399,17 @@ name = "actix_derive"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b95aceadaf327f18f0df5962fedc1bde2f870566a0b9f65c89508a3b1f79334c"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "actix_derive"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6d44b8fee1ced9671ba043476deddef739dd0959bf77030b26b738cc591737a7"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -606,7 +641,7 @@ version = "2.8.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cbd8035ae1ccb5e43fcfd60ea1b208f24c28543a8930dcd657bf28e536d66b2e"
 dependencies = [
- "actix",
+ "actix 0.10.0",
  "actix-http",
  "actix-web",
  "actix-web-actors",
@@ -2660,10 +2695,21 @@ dependencies = [
 [[package]]
 name = "news-contract"
 version = "0.1.0"
+dependencies = [
+ "diesel",
+ "serde",
+ "serde_json",
+]
 
 [[package]]
 name = "news-dao"
 version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "diesel",
+ "news-contract",
+ "uuid 0.8.2",
+]
 
 [[package]]
 name = "news-migrations"
@@ -2677,6 +2723,16 @@ dependencies = [
 [[package]]
 name = "news-service"
 version = "0.1.0"
+dependencies = [
+ "actix 0.11.1",
+ "actix-web",
+ "env_logger",
+ "log",
+ "news-contract",
+ "news-dao",
+ "serde",
+ "serde_json",
+]
 
 [[package]]
 name = "nom"
