@@ -20,7 +20,7 @@ impl NewsMigration for CreateTableNewsMigration {
         let mut m = Migration::new();
         m.create_table_if_not_exists("news", |t| {
             t.add_column("id", types::uuid().primary(true));
-            t.add_column("name", types::text());
+            t.add_column("desc", types::text());
             t.add_column("url", types::text());
         });
         m.make::<Pg>().to_owned()

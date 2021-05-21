@@ -12,7 +12,7 @@ use news_contract::News;
 use schema::news::dsl::{desc, id, news, url};
 
 pub async fn connect() -> PgConnection {
-    let database_url = String::from("");
+    let database_url = String::from("postgres://postgres:password@localhost/test");
 
     let conn = PgConnection::establish(&database_url);
 
@@ -47,10 +47,16 @@ pub async fn delete_news_by_id(i: &String) -> Option<bool> {
 }
 
 pub async fn insert_news(u: &String, d: &String) -> Option<News> {
-    //
-    // todo: Insertable
+    let conn = connect().await;
 
-    None
+    let result = diesel::insert_into(news)
+        .values(&(id.eq(uuid::Uuid::new_v4()), desc.eq(d), url.eq(u)))
+        .get_result::<News>(&conn);
+
+    match result {
+        Ok(n) => Some(n),
+        Err(_) => None,
+    }
 }
 
 pub async fn list_news() -> Option<Vec<News>> {

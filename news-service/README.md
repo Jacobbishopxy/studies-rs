@@ -37,3 +37,5 @@
 此处是服务的实现，没有任何 REST 或 actix 的依赖在此。用于实现验证，业务逻辑，以及委派给 dao。所有的 CRUD 函数皆是异步的。
 
 ### Dao
+
+原文使用 tokio 以及 tokio_postgres 作为异步的 DAO，本项目用的是 diesel （同步代码）作为替代。

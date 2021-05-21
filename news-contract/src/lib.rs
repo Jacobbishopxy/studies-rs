@@ -1,12 +1,16 @@
+mod schema;
+
 #[macro_use]
 extern crate diesel;
 extern crate serde;
 extern crate serde_json;
 
+use schema::*;
 use serde::{Deserialize, Serialize};
 use std::fmt::{self, Display, Formatter};
 
-#[derive(Debug, Serialize, Deserialize, Queryable)]
+#[derive(Debug, Serialize, Deserialize, Queryable, Insertable)]
+#[table_name = "news"]
 pub struct News {
     pub id: uuid::Uuid,
     pub desc: String,
