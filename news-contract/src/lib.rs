@@ -6,9 +6,9 @@ extern crate serde_json;
 use serde::{Deserialize, Serialize};
 use std::fmt::{self, Display, Formatter};
 
-#[derive(Serialize, Deserialize, Debug, Queryable, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Queryable)]
 pub struct News {
-    pub id: String,
+    pub id: uuid::Uuid,
     pub desc: String,
     pub url: String,
 }
@@ -26,7 +26,7 @@ mod news_contract_tests {
     #[test]
     fn test_display() {
         let n = News {
-            id: "1".to_string(),
+            id: uuid::Uuid::new_v4(),
             desc: "google".to_string(),
             url: "google.com".to_string(),
         };

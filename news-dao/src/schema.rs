@@ -1,6 +1,6 @@
 table! {
     news (id) {
-        id -> String,
+        id -> Uuid,
         desc -> Text,
         url -> Text,
     }

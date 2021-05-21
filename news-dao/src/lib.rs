@@ -25,29 +25,40 @@ pub async fn connect() -> PgConnection {
 }
 
 pub async fn get_news_by_id(i: &String) -> Option<News> {
-    //
-    //
+    let uuid = uuid::Uuid::parse_str(&i).unwrap();
+    let conn = connect().await;
+    let result = news.filter(id.eq(uuid)).first::<News>(&conn);
 
-    None
+    match result {
+        Ok(r) => Some(r),
+        Err(_) => None,
+    }
 }
 
 pub async fn delete_news_by_id(i: &String) -> Option<bool> {
-    //
-    //
+    let uuid = uuid::Uuid::parse_str(&i).unwrap();
+    let conn = connect().await;
+    let result = diesel::delete(news.filter(id.eq(uuid))).execute(&conn);
 
-    None
+    match result {
+        Ok(_) => Some(true),
+        Err(_) => None,
+    }
 }
 
 pub async fn insert_news(u: &String, d: &String) -> Option<News> {
     //
-    //
+    // todo: Insertable
 
     None
 }
 
 pub async fn list_news() -> Option<Vec<News>> {
-    //
-    //
+    let conn = connect().await;
+    let result = news.load::<News>(&conn);
 
-    None
+    match result {
+        Ok(r) => Some(r),
+        Err(_) => None,
+    }
 }
