@@ -11,7 +11,8 @@ members = [
     "news-service",
     "news-contract",
     "news-dao",
-    "news-migrations"
+    "news-migrations",
+    "sea-server"
 ]
 
 resolver = "2"

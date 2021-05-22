@@ -3711,6 +3711,45 @@ dependencies = [
 ]
 
 [[package]]
+name = "sea-query"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "49ac3701336ff4e11b1d81cadc23de7b94252dd6e9fd49e856440db200bded9a"
+dependencies = [
+ "anyhow",
+ "sea-query-derive",
+ "thiserror",
+]
+
+[[package]]
+name = "sea-query-derive"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0f30d6681c05300d4d92aa3dce08585b52c775735d632bb1f16f9f68f29c832d"
+dependencies = [
+ "heck",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "sea-server"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "dotenv",
+ "env_logger",
+ "lazy_static",
+ "log",
+ "sea-query",
+ "serde",
+ "serde_json",
+ "sqlx",
+ "uuid 0.8.2",
+]
+
+[[package]]
 name = "security-framework"
 version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
