@@ -1,70 +1,69 @@
-mod schema;
-
-#[macro_use]
 extern crate diesel;
 extern crate news_contract;
-// extern crate uuid;
 
-use diesel::pg::PgConnection;
 use diesel::prelude::*;
+use diesel::{r2d2::ConnectionManager, PgConnection};
 
-use news_contract::News;
+use news_contract::{schema, News};
 use schema::news::dsl::{desc, id, news, url};
 
-pub async fn connect() -> PgConnection {
-    let database_url = String::from("postgres://postgres:password@localhost/test");
+pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 
-    let conn = PgConnection::establish(&database_url);
+#[derive(Clone)]
+pub struct DAO {
+    pool: Pool,
+}
 
-    match conn {
-        Ok(c) => c,
-        Err(e) => {
-            panic!("Connection error: {:?}", e);
+impl DAO {
+    pub fn new(uri: String) -> Self {
+        let manager = ConnectionManager::<PgConnection>::new(uri);
+        let pool = r2d2::Pool::builder()
+            .build(manager)
+            .expect("Failed to create pool.");
+        DAO { pool }
+    }
+
+    pub async fn get_news_by_id(&self, i: &String) -> Option<News> {
+        let conn = &self.pool.get().unwrap();
+        let uuid = uuid::Uuid::parse_str(&i).unwrap();
+        let result = news.filter(id.eq(uuid)).first::<News>(conn);
+
+        match result {
+            Ok(r) => Some(r),
+            Err(_) => None,
         }
     }
-}
 
-pub async fn get_news_by_id(i: &String) -> Option<News> {
-    let uuid = uuid::Uuid::parse_str(&i).unwrap();
-    let conn = connect().await;
-    let result = news.filter(id.eq(uuid)).first::<News>(&conn);
+    pub async fn delete_news_by_id(&self, i: &String) -> Option<bool> {
+        let conn = &self.pool.get().unwrap();
+        let uuid = uuid::Uuid::parse_str(&i).unwrap();
+        let result = diesel::delete(news.filter(id.eq(uuid))).execute(conn);
 
-    match result {
-        Ok(r) => Some(r),
-        Err(_) => None,
+        match result {
+            Ok(_) => Some(true),
+            Err(_) => None,
+        }
     }
-}
 
-pub async fn delete_news_by_id(i: &String) -> Option<bool> {
-    let uuid = uuid::Uuid::parse_str(&i).unwrap();
-    let conn = connect().await;
-    let result = diesel::delete(news.filter(id.eq(uuid))).execute(&conn);
+    pub async fn insert_news(&self, u: &String, d: &String) -> Option<News> {
+        let conn = &self.pool.get().unwrap();
+        let result = diesel::insert_into(news)
+            .values(&(id.eq(uuid::Uuid::new_v4()), desc.eq(d), url.eq(u)))
+            .get_result::<News>(conn);
 
-    match result {
-        Ok(_) => Some(true),
-        Err(_) => None,
+        match result {
+            Ok(n) => Some(n),
+            Err(_) => None,
+        }
     }
-}
 
-pub async fn insert_news(u: &String, d: &String) -> Option<News> {
-    let conn = connect().await;
+    pub async fn list_news(&self) -> Option<Vec<News>> {
+        let conn = &self.pool.get().unwrap();
+        let result = news.load::<News>(conn);
 
-    let result = diesel::insert_into(news)
-        .values(&(id.eq(uuid::Uuid::new_v4()), desc.eq(d), url.eq(u)))
-        .get_result::<News>(&conn);
-
-    match result {
-        Ok(n) => Some(n),
-        Err(_) => None,
-    }
-}
-
-pub async fn list_news() -> Option<Vec<News>> {
-    let conn = connect().await;
-    let result = news.load::<News>(&conn);
-
-    match result {
-        Ok(r) => Some(r),
-        Err(_) => None,
+        match result {
+            Ok(r) => Some(r),
+            Err(_) => None,
+        }
     }
 }

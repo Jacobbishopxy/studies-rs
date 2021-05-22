@@ -1,7 +1,5 @@
 use actix_web::{delete, get, put, web, HttpResponse, Responder};
-
-#[path = "service.rs"]
-mod service;
+use news_dao::DAO;
 
 #[get("/")]
 async fn index() -> impl Responder {
@@ -9,35 +7,35 @@ async fn index() -> impl Responder {
 }
 
 #[get("/news")]
-pub async fn list_news() -> HttpResponse {
-    let news = service::list_news().await;
+pub async fn list_news(dao: web::Data<DAO>) -> HttpResponse {
+    let news = dao.list_news().await;
     HttpResponse::Ok().json(news)
 }
 
 #[get("/news/{id}")]
-pub async fn get_news_by_id(info: web::Path<String>) -> HttpResponse {
+pub async fn get_news_by_id(info: web::Path<String>, dao: web::Data<DAO>) -> HttpResponse {
     let id = &info.as_str();
     let mut new_string = String::new();
     new_string.push_str(id);
 
-    let news = service::get_news_by_id(&new_string).await;
+    let news = dao.get_news_by_id(&new_string).await;
     HttpResponse::Ok().json(news)
 }
 
 #[delete("/news/{id}")]
-pub async fn delete_news_by_id(info: web::Path<String>) -> HttpResponse {
+pub async fn delete_news_by_id(info: web::Path<String>, dao: web::Data<DAO>) -> HttpResponse {
     let id = &info.as_str();
     let mut new_string = String::new();
     new_string.push_str(id);
 
-    let news = service::delete_news_by_id(&new_string).await;
+    let news = dao.delete_news_by_id(&new_string).await;
     HttpResponse::Ok().json(news)
 }
 
 #[put("/news/{url}/{desc}")]
-pub async fn insert_news(info: web::Path<(String, String)>) -> impl Responder {
+pub async fn insert_news(info: web::Path<(String, String)>, dao: web::Data<DAO>) -> impl Responder {
     let url = &info.0 .0;
     let desc = &info.0 .1;
-    let news = service::insert_news(url, desc).await;
+    let news = dao.insert_news(url, desc).await;
     HttpResponse::Ok().json(news)
 }

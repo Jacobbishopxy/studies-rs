@@ -2697,6 +2697,8 @@ name = "news-contract"
 version = "0.1.0"
 dependencies = [
  "diesel",
+ "dotenv",
+ "lazy_static",
  "serde",
  "serde_json",
  "uuid 0.8.2",
@@ -2706,9 +2708,9 @@ dependencies = [
 name = "news-dao"
 version = "0.1.0"
 dependencies = [
- "actix-web",
  "diesel",
  "news-contract",
+ "r2d2",
  "uuid 0.8.2",
 ]
 
@@ -2718,6 +2720,7 @@ version = "0.1.0"
 dependencies = [
  "async-std",
  "barrel",
+ "news-contract",
  "sqlx",
 ]
 

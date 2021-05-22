@@ -7,6 +7,6 @@ edition = "2018"
 
 [dependencies]
 news-contract = { path = "../news-contract" }
-actix-web = "3.3.2"
-diesel = { version = "1.4.6", features = ["postgres", "uuidv07"] }
+diesel = { version = "1.4.6", features = ["postgres", "uuidv07", "r2d2"] }
 uuid = { version = "0.8.2", features=["v4"] }
+r2d2 = "0.8.9"
