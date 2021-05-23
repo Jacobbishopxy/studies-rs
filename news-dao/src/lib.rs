@@ -1,4 +1,3 @@
-extern crate diesel;
 extern crate news_contract;
 
 use diesel::prelude::*;

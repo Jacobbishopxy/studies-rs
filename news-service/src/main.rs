@@ -1,12 +1,11 @@
 mod endpoints;
 
-#[macro_use]
-extern crate log;
 extern crate actix_web;
 extern crate env_logger;
 extern crate news_contract;
 
 use actix_web::{App, HttpServer};
+use log::info;
 
 use endpoints::*;
 use news_contract::constant::CFG;
