@@ -36,7 +36,7 @@ pub enum SColumnType {
     DateTime,
     Timestamp,
     Char,
-    Varchar,
+    VarChar,
     Text,
     Json,
     Binary,
@@ -44,7 +44,7 @@ pub enum SColumnType {
 
 impl Default for SColumnType {
     fn default() -> Self {
-        SColumnType::Varchar
+        SColumnType::VarChar
     }
 }
 
