@@ -54,7 +54,7 @@ pub struct SColumn {
     pub col_type: SColumnType,
     pub null: bool,
     pub key: SColumnKey,
-    pub extra: SColumnExtra,
+    // pub extra: SColumnExtra,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
