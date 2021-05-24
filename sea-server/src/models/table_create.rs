@@ -52,8 +52,8 @@ impl Default for SColumnType {
 pub struct SColumn {
     pub name: String,
     pub col_type: SColumnType,
-    pub null: bool,
-    pub key: SColumnKey,
+    pub null: Option<bool>,
+    pub key: Option<SColumnKey>,
     // pub extra: SColumnExtra,
 }
 
@@ -61,12 +61,6 @@ pub struct SColumn {
 pub struct STable {
     pub name: String,
     pub columns: Vec<SColumn>,
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
-pub struct SSchema {
-    pub schema: String,
-    pub tables: Vec<STable>,
 }
 
 #[cfg(test)]
@@ -81,7 +75,7 @@ mod test_table {
             columns: vec![
                 SColumn {
                     name: "id".to_string(),
-                    key: SColumnKey::Primary,
+                    key: Some(SColumnKey::Primary),
                     ..Default::default()
                 },
                 SColumn {

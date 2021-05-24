@@ -17,7 +17,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .data(dao.clone())
             .service(db::index)
-            .service(db::create_table)
+            .service(db::table_create)
     })
     .bind("127.0.0.1:8080")?
     .run()
