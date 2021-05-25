@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use super::SColumn;
+use super::super::SColumn;
 
 pub type SColumnAdd = SColumn;
 

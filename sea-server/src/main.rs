@@ -2,7 +2,7 @@ use actix_web::{App, HttpServer};
 use log::info;
 
 use sea_server::dao::pg;
-use sea_server::endpoints::db;
+use sea_server::endpoints::db_schema;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -16,8 +16,9 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .data(dao.clone())
-            .service(db::index)
-            .service(db::table_create)
+            .service(db_schema::index)
+            .service(db_schema::table_create)
+            .service(db_schema::table_alter)
     })
     .bind("127.0.0.1:8080")?
     .run()

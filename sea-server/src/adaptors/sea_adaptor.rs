@@ -59,7 +59,6 @@ pub fn table_create(table: &STable, create_if_not_exists: bool) -> String {
 
 pub fn table_alter(alter: &STableAlter) -> Vec<String> {
     let s = Table::alter().table(Alias::new(&alter.name));
-    // s.table(Alias::new(&alter.name));
     let mut alter_series = vec![];
 
     for a in &alter.alter {
