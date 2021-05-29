@@ -1,5 +1,5 @@
 [package]
-name = "aar-frontend-handlebars"
+name = "frontend-wasm"
 version = "0.1.0"
 edition = "2018"
 

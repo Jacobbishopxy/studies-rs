@@ -1,15 +1,15 @@
 mod endpoints;
 
 extern crate actix_web;
+extern crate contract;
 extern crate env_logger;
-extern crate news_contract;
 
 use actix_web::{App, HttpServer};
 use log::info;
 
+use contract::constant::CFG;
+use dao::DAO;
 use endpoints::*;
-use news_contract::constant::CFG;
-use news_dao::DAO;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

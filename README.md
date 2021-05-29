@@ -1,11 +1,11 @@
 # Demo
 
 - [holodeck](./holodeck/README.md)
-- [arr-backend](./arr-backend/README.md)
+- [aar](./aar/README.md)
 - [ads](./ads/README.md)
 - [sas](./sas/README.md)
 - [yew-tutorial](./yew-tutorial/README.md)
-- [news](./news-service/README.md)
+- [news](./news/README.md)
 
 ## To test
 

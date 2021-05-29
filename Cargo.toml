@@ -1,17 +1,20 @@
 [workspace]
-
 members = [
     "holodeck",
-    "aar-backend",
-    "aar-frontend-handlebars",
-    "aar-frontend-wasm",
+    "aar/backend",
+    "aar/frontend-handlebars",
+    "aar/frontend-wasm",
     "ads",
     "sas",
     "yew-tutorial",
-    "news-service",
-    "news-contract",
-    "news-dao",
-    "news-migrations",
+    "news/service",
+    "news/contract",
+    "news/dao",
+    "news/migrations",
+    "tonic-example"
+]
+default-members = [
+    "news/service"
 ]
 
 resolver = "2"

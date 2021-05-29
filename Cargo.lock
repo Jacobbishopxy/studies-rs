@@ -13,27 +13,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "aar-backend"
-version = "0.1.0"
-dependencies = [
- "actix-web",
- "async-graphql",
- "async-graphql-actix-web",
- "dotenv",
- "lazy_static",
- "rbatis",
- "serde",
-]
-
-[[package]]
-name = "aar-frontend-handlebars"
-version = "0.1.0"
-
-[[package]]
-name = "aar-frontend-wasm"
-version = "0.1.0"
-
-[[package]]
 name = "actix"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -78,7 +57,7 @@ dependencies = [
  "parking_lot",
  "pin-project-lite 0.2.6",
  "smallvec",
- "tokio 1.5.0",
+ "tokio 1.6.1",
  "tokio-util 0.6.6",
 ]
 
@@ -234,7 +213,7 @@ checksum = "bc7d7cd957c9ed92288a7c3c96af81fa5291f65247a76a34dac7b6af74e52ba0"
 dependencies = [
  "actix-macros 0.2.0",
  "futures-core",
- "tokio 1.5.0",
+ "tokio 1.6.1",
 ]
 
 [[package]]
@@ -788,9 +767,9 @@ dependencies = [
 
 [[package]]
 name = "async-stream"
-version = "0.3.1"
+version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0a26cb53174ddd320edfff199a853f93d571f48eeb4dde75e67a9a3dbb7b7e5e"
+checksum = "171374e7e3b2504e0e5236e3b59260560f9fe94bfe9ac39ba5e4e929c5590625"
 dependencies = [
  "async-stream-impl",
  "futures-core",
@@ -798,9 +777,9 @@ dependencies = [
 
 [[package]]
 name = "async-stream-impl"
-version = "0.3.1"
+version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "db134ba52475c060f3329a8ef0f8786d6b872ed01515d4b79c162e5798da1340"
+checksum = "648ed8c8d2ce5409ccd57453d9d1b214b342a0d69376a6feda1fd6cae3299308"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -884,6 +863,19 @@ dependencies = [
  "serde",
  "serde_json",
  "serde_urlencoded",
+]
+
+[[package]]
+name = "backend"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "async-graphql",
+ "async-graphql-actix-web",
+ "dotenv",
+ "lazy_static",
+ "rbatis",
+ "serde",
 ]
 
 [[package]]
@@ -1223,6 +1215,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "245097e9a4535ee1e3e3931fcfcd55a796a44c643e8596ff6566d68f09b87bbc"
 
 [[package]]
+name = "contract"
+version = "0.1.0"
+dependencies = [
+ "diesel",
+ "dotenv",
+ "lazy_static",
+ "serde",
+ "serde_json",
+ "uuid 0.8.2",
+]
+
+[[package]]
 name = "convert_case"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1379,6 +1383,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fb4a30d54f7443bf3d6191dcd486aca19e67cb3c49fa7a06a319966346707e7f"
 dependencies = [
  "cipher",
+]
+
+[[package]]
+name = "dao"
+version = "0.1.0"
+dependencies = [
+ "contract",
+ "diesel",
+ "r2d2",
+ "uuid 0.8.2",
 ]
 
 [[package]]
@@ -1730,6 +1744,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "frontend-handlebars"
+version = "0.1.0"
+
+[[package]]
+name = "frontend-wasm"
+version = "0.1.0"
+
+[[package]]
 name = "fuchsia-cprng"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2024,7 +2046,7 @@ dependencies = [
  "http",
  "indexmap",
  "slab",
- "tokio 1.5.0",
+ "tokio 1.6.1",
  "tokio-util 0.6.6",
  "tracing",
 ]
@@ -2122,7 +2144,7 @@ version = "0.1.0"
 dependencies = [
  "serde",
  "serde_json",
- "tokio 1.5.0",
+ "tokio 1.6.1",
  "warp",
 ]
 
@@ -2245,7 +2267,7 @@ dependencies = [
  "itoa",
  "pin-project 1.0.7",
  "socket2 0.4.0",
- "tokio 1.5.0",
+ "tokio 1.6.1",
  "tower-service",
  "tracing",
  "want",
@@ -2537,6 +2559,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b16bd47d9e329435e309c58469fe0791c2d0d1ba96ec0954152a5ae2b04387dc"
 
 [[package]]
+name = "migrations"
+version = "0.1.0"
+dependencies = [
+ "async-std",
+ "barrel",
+ "contract",
+ "sqlx",
+]
+
+[[package]]
 name = "mime"
 version = "0.3.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2690,52 +2722,6 @@ dependencies = [
  "cfg-if 0.1.10",
  "libc",
  "winapi 0.3.9",
-]
-
-[[package]]
-name = "news-contract"
-version = "0.1.0"
-dependencies = [
- "diesel",
- "dotenv",
- "lazy_static",
- "serde",
- "serde_json",
- "uuid 0.8.2",
-]
-
-[[package]]
-name = "news-dao"
-version = "0.1.0"
-dependencies = [
- "diesel",
- "news-contract",
- "r2d2",
- "uuid 0.8.2",
-]
-
-[[package]]
-name = "news-migrations"
-version = "0.1.0"
-dependencies = [
- "async-std",
- "barrel",
- "news-contract",
- "sqlx",
-]
-
-[[package]]
-name = "news-service"
-version = "0.1.0"
-dependencies = [
- "actix 0.11.1",
- "actix-web",
- "env_logger",
- "log",
- "news-contract",
- "news-dao",
- "serde",
- "serde_json",
 ]
 
 [[package]]
@@ -3792,6 +3778,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "service"
+version = "0.1.0"
+dependencies = [
+ "actix 0.11.1",
+ "actix-web",
+ "contract",
+ "dao",
+ "env_logger",
+ "log",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "sha-1"
 version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4285,9 +4285,9 @@ dependencies = [
 
 [[package]]
 name = "tokio"
-version = "1.5.0"
+version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "83f0c8e7c0addab50b663055baf787d0af7f413a46e6e7fb9559a4e4db7137a5"
+checksum = "0a38d31d7831c6ed7aad00aa4c12d9375fd225a6dd77da1d25b707346319a975"
 dependencies = [
  "autocfg 1.0.1",
  "bytes 1.0.1",
@@ -4322,7 +4322,7 @@ checksum = "e177a5d8c3bf36de9ebe6d58537d8879e964332f93fb3339e43f618c81361af0"
 dependencies = [
  "futures-core",
  "pin-project-lite 0.2.6",
- "tokio 1.5.0",
+ "tokio 1.6.1",
 ]
 
 [[package]]
@@ -4344,7 +4344,7 @@ dependencies = [
  "futures-util",
  "log",
  "pin-project 1.0.7",
- "tokio 1.5.0",
+ "tokio 1.6.1",
  "tungstenite",
 ]
 
@@ -4374,7 +4374,7 @@ dependencies = [
  "futures-sink",
  "log",
  "pin-project-lite 0.2.6",
- "tokio 1.5.0",
+ "tokio 1.6.1",
 ]
 
 [[package]]
@@ -4385,6 +4385,10 @@ checksum = "a31142970826733df8241ef35dc040ef98c679ab14d7c3e54d827099b3acecaa"
 dependencies = [
  "serde",
 ]
+
+[[package]]
+name = "tonic-example"
+version = "0.1.0"
 
 [[package]]
 name = "tower-service"
@@ -4686,7 +4690,7 @@ dependencies = [
  "serde",
  "serde_json",
  "serde_urlencoded",
- "tokio 1.5.0",
+ "tokio 1.6.1",
  "tokio-stream",
  "tokio-tungstenite",
  "tokio-util 0.6.6",

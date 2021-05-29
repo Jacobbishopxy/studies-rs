@@ -1,5 +1,5 @@
 use actix_web::{delete, get, put, web, HttpResponse, Responder};
-use news_dao::DAO;
+use dao::DAO;
 
 #[get("/")]
 async fn index() -> impl Responder {

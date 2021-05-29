@@ -1,12 +1,12 @@
 [package]
-name = "news-dao"
+name = "dao"
 version = "0.1.0"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-news-contract = { path = "../news-contract" }
+contract = { path = "../contract" }
 diesel = { version = "1.4.6", features = ["postgres", "uuidv07", "r2d2"] }
 uuid = { version = "0.8.2", features=["v4"] }
 r2d2 = "0.8.9"

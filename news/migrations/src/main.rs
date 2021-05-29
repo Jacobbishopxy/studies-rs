@@ -1,7 +1,7 @@
 mod migration;
 
+use contract::constant::CFG;
 use migration::{create_table_news, CreateTableNewsMigration, NewsMigration};
-use news_contract::constant::CFG;
 use sqlx::postgres::PgPoolOptions;
 
 #[async_std::main]

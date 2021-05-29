@@ -1,9 +1,9 @@
-extern crate news_contract;
+extern crate contract;
 
 use diesel::prelude::*;
 use diesel::{r2d2::ConnectionManager, PgConnection};
 
-use news_contract::{schema, News};
+use contract::{schema, News};
 use schema::news::dsl::{desc, id, news, url};
 
 pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
