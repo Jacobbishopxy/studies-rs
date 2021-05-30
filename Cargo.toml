@@ -1,11 +1,11 @@
 [workspace]
 members = [
     "holodeck",
-    "aar/backend",
-    "aar/frontend-handlebars",
-    "aar/frontend-wasm",
-    "ads",
-    "sas",
+    "actix_web-async-graphql_rbatis/backend",
+    "actix_web-async-graphql_rbatis/frontend-handlebars",
+    "actix_web-async-graphql_rbatis/frontend-wasm",
+    "actix_web-dissel-sqlite",
+    "simple-auth-server",
     "yew-tutorial",
     "news/service",
     "news/contract",
