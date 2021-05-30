@@ -1,7 +1,7 @@
 # Demo
 
 - [holodeck](./holodeck/README.md)
-- [actix_web-async-graphql_rbatis](./actix_web-async-graphql_rbatis/README.md)
+- [actix_web-async_graphql_rbatis](./actix_web-async_graphql_rbatis/README.md)
 - [actix_web-dissel-sqlite](./actix_web-dissel-sqlite/README.md)
 - [simple-auth-server](./simple-auth-server/README.md)
 - [yew-tutorial](./yew-tutorial/README.md)

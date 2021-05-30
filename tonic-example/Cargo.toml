@@ -5,11 +5,11 @@ edition = "2018"
 
 [[bin]]
 name = "helloworld-server"
-path = "src/server.rs"
+path = "src/helloworld/server.rs"
 
 [[bin]]
 name = "helloworld-client"
-path = "src/client.rs"
+path = "src/helloworld/client.rs"
 
 [dependencies]
 prost = "0.7.0"

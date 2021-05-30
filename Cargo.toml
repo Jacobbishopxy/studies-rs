@@ -1,9 +1,9 @@
 [workspace]
 members = [
     "holodeck",
-    "actix_web-async-graphql_rbatis/backend",
-    "actix_web-async-graphql_rbatis/frontend-handlebars",
-    "actix_web-async-graphql_rbatis/frontend-wasm",
+    "actix_web-async_graphql_rbatis/backend",
+    "actix_web-async_graphql_rbatis/frontend-handlebars",
+    "actix_web-async_graphql_rbatis/frontend-wasm",
     "actix_web-dissel-sqlite",
     "simple-auth-server",
     "yew-tutorial",
