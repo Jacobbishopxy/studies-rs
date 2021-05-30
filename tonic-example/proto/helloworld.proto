@@ -1,0 +1,23 @@
+// gRPC 可以定义四种服务方法，本案例仅使用一个简单的RPC，在另一个案例中可以看到所有方法。
+
+// 选择语法，命名包
+syntax = "proto3";
+package helloworld;
+
+// 定义服务，将会在应用程序中使用
+// 一个 RPC 包含了身份验证 Identifier，请求类型 Request type，响应类型 Response type。
+service Greeter {
+    // Our SayHello rpc accepts HelloRequests and returns HelloReplies
+    rpc SayHello (HelloRequest) returns (HelloReply);
+}
+
+// 定义信息类型
+message HelloRequest {
+    // Request message contains the name to be greeted
+    string name = 1;
+}
+
+message HelloReply {
+    // Reply contains the greeting message
+    string message = 1;
+}

@@ -6,6 +6,7 @@
 - [simple-auth-server](./simple-auth-server/README.md)
 - [yew-tutorial](./yew-tutorial/README.md)
 - [news](./news/README.md)
+- [tonic-example](./tonic-example/README.md)
 
 ## To test
 
