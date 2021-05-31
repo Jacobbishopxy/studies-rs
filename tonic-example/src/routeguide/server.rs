@@ -39,7 +39,7 @@ struct RouteGuideService {
 
 #[tonic::async_trait]
 impl RouteGuide for RouteGuideService {
-    /// 简易 RPC
+    /// 1. 简易 RPC
     async fn get_feature(&self, request: Request<Point>) -> Result<Response<Feature>, Status> {
         for feature in &self.features[..] {
             if feature.location.as_ref() == Some(request.get_ref()) {
@@ -52,7 +52,7 @@ impl RouteGuide for RouteGuideService {
 
     type ListFeaturesStream = ReceiverStream<Result<Feature, Status>>;
 
-    /// 服务端流式 RPC
+    /// 2. 服务端流式 RPC
     async fn list_features(
         &self,
         request: Request<Rectangle>,
@@ -71,7 +71,7 @@ impl RouteGuide for RouteGuideService {
         Ok(Response::new(ReceiverStream::new(rx)))
     }
 
-    /// 客户端流式 RPC
+    /// 3. 客户端流式 RPC
     async fn record_route(
         &self,
         request: Request<tonic::Streaming<Point>>,
@@ -107,7 +107,7 @@ impl RouteGuide for RouteGuideService {
     type RouteChatStream =
         Pin<Box<dyn Stream<Item = Result<RouteNote, Status>> + Send + Sync + 'static>>;
 
-    /// 双向流式 RPC
+    /// 4. 双向流式 RPC
     async fn route_chat(
         &self,
         request: Request<tonic::Streaming<RouteNote>>,

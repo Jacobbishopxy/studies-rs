@@ -15,7 +15,7 @@ struct Location {
 
 #[allow(dead_code)]
 pub fn load() -> Vec<crate::routeguide::Feature> {
-    let file_name = "tonic-examples/data/route_guide_db.json";
+    let file_name = "tonic-example/data/route_guide_db.json";
     let file = File::open(file_name).expect("failed to open data file");
 
     let decoded: Vec<Feature> =
