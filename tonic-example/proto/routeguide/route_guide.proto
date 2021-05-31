@@ -1,0 +1,94 @@
+
+
+syntax = "proto3";
+package routeguide;
+
+service RouteGuide {
+
+    // 1. 一个简单的 RPC。
+    // - 客户端发送一个请求至服务端，等待响应。与普通的函数调用类似。
+    //
+    // 获取给定 position 的 feature
+    rpc GetFeature(Point) returns (Feature) {}
+
+    // 2. 一个服务端的流式 RPC。
+    // - 客户端发送一个请求至服务端，获取流作为序列信息返回。
+    // - 客户端从流中读取直到不再有信息。
+    // - 放置 `stream` 关键字于 response 类型前。
+    //
+    // 获取给定 rectangle 的可用 features
+    // 返回结果是流式的而非一次性，因为 rectangle 可能涵盖了很大的 area
+    // 以及大量的 feature
+    rpc ListFeatures(Rectangle) returns (stream Feature) {}
+
+    // 3. 一个客户端的流式 RPC
+    // - 客户端编写序列信息并发送给服务端。
+    // - 一旦客户端完成信息编写，则会等待服务端读取完所有信息而后返回响应。
+    // - 放置 `stream` 关键字于 request 类型前。
+    //
+    // 在一个正在被 traversed 的路由上接受 Points 流数据，
+    // 当 traversal 完成后返回一个 RouteSummary。
+    rpc RecordRoute(stream Point) returns (RouteSummary) {}
+
+    // 4. 一个双向的流式 RPC
+    // - 双端皆发送序列信息
+    // - 两个流互相独立，因此客户端与服务端可以不考虑顺序的读写：
+    //   例如，服务端可以等待接受所有客户端信息后再返回响应，
+    //   或者也可以读取一个信息再编写一个信息，或者是其它的读写组合。
+    // - 在每个流上信息的顺序都会被保留。
+    // - 放置 `stream` 关键字于 request 和 response 前。
+    //
+    // 接受 RouteNotes 流的同时，发送 RouteNotes 流给客户端
+    rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+}
+
+// Points 由经度-纬度组合而成
+// 皆为 E7 精度的整数
+// 纬度应该在 +/- 90 度之内，经度应该在 +/- 180 度之内（包含）
+message Point {
+    int32 latitude = 1;
+    int32 longitude = 2;
+}
+
+// 由经纬度构成的长方形
+message Rectangle {
+
+    // 长方形一角
+    Point lo = 1;
+
+    // 长方形另一角
+    Point hi = 2;
+}
+
+// 一个 feature 为某一点的特征
+message Feature {
+    // 特征名称
+    string name = 1;
+
+    // 特征点的位置
+    Point location = 2;
+}
+
+// 在给定 point 上发送的信息
+message RouteNote {
+    // 信息发送的地址
+    Point location = 1;
+
+    // 信息
+    string message = 2;
+}
+
+// 作为 RecordRoute rpc 的返回类型
+message RouteSummary {
+    // 接受 points 的总数
+    int32 point_count = 1;
+
+    // 在 traverse 路由上传递的已知特征总数
+    int32 feature_count = 2;
+
+    // 各个点之间的距离总数（米）
+    int32 distance = 3;
+
+    // traversal 的持续时间（秒）
+    int32 elapsed_time = 4;
+}

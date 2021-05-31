@@ -4,5 +4,5 @@
 
 *.code-workspace
 
-aar-backend/.env
-sas/.env
+actix_web-async_graphql_rbatis/backend/.env
+simple-auth-server/.env
