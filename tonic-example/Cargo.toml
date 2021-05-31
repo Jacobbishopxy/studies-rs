@@ -19,6 +19,13 @@ path = "src/routeguide/server.rs"
 name = "routeguide-client"
 path = "src/routeguide/client.rs"
 
+[[bin]]
+name = "authentication-server"
+path = "src/authentication/server.rs"
+
+[[bin]]
+name = "authentication-client"
+path = "src/authentication/client.rs"
 
 [dependencies]
 # 基础依赖
