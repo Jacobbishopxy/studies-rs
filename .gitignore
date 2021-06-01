@@ -6,3 +6,4 @@
 
 actix_web-async_graphql_rbatis/backend/.env
 simple-auth-server/.env
+solar-system/.env
