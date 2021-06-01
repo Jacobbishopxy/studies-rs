@@ -18,17 +18,6 @@ table! {
     }
 }
 
-table! {
-    test (id) {
-        id -> Varchar,
-        name -> Nullable<Varchar>,
-    }
-}
-
 joinable!(satellites -> planets (planet_id));
 
-allow_tables_to_appear_in_same_query!(
-    planets,
-    satellites,
-    test,
-);
+allow_tables_to_appear_in_same_query!(planets, satellites,);
