@@ -11,13 +11,12 @@ members = [
     "news/contract",
     "news/dao",
     "news/migrations",
-    "tonic-example"
+    "tonic-example",
+    "solar-system",
 ]
 default-members = [
     "news/service"
 ]
-
-resolver = "2"
 
 [profile.dev]
 split-debuginfo = "unpacked"

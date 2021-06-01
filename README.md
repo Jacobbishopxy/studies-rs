@@ -7,6 +7,7 @@
 - [yew-tutorial](./yew-tutorial/README.md)
 - [news](./news/README.md)
 - [tonic-example](./tonic-example/README.md)
+- [solar-system](./solar-system/README.md)
 
 ## To test
 
@@ -15,8 +16,6 @@
 ## To read
 
 - [GraphQL in Rust](https://romankudryashov.com/blog/2020/12/graphql-rust/#_conclusion)
-- [GRPC in Rust](https://romankudryashov.com/blog/2021/04/grpc-rust/)
-- [How to use gRPC with Rust Tonic and Postgres database with examples](https://dev.to/steadylearner/how-to-use-grpc-with-rust-tonic-and-postgres-database-with-examples-3dl7)
 - [Yew Megatutorial Series' Articles](https://dev.to/davidedelpapa/series/5838)
 - [rust-playground](https://github.com/diegopacheco/rust-playground)
 

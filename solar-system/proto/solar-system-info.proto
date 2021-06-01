@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package solar_system_info;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+// 太阳系信息
+service SolarSystemInfo {
+    rpc GetPlanetsList (google.protobuf.Empty) returns (PlanetsListResponse);
+    rpc GetPlanet (PlanetRequest) returns (PlanetResponse);
+    rpc GetPlanets (google.protobuf.Empty) returns (stream PlanetResponse);
+}
+
+// 星球列表响应
+message PlanetsListResponse {
+    repeated string list = 1;
+}
+
+// 星球请求
+message PlanetRequest {
+    string name = 1;
+}
+
+// 星球响应
+message PlanetResponse {
+    Planet planet = 1;
+}
+
+// 星球信息
+message Planet {
+    uint64 id = 1;
+    string name = 2;
+    Type type = 3;
+    float meanRadius = 4;
+    float mass = 5;
+    repeated Satellite satellites = 6;
+    bytes image = 7;
+}
+
+// 星球类型
+enum Type {
+    TERRESTRIAL_PLANET = 0;
+    GAS_GIANT = 1;
+    ICE_GIANT = 2;
+    DWARF_PLANET = 3;
+}
+
+// 卫星信息
+message Satellite {
+    uint64 id = 1;
+    string name = 2;
+    google.protobuf.Timestamp first_spacecraft_landing_date = 3;
+}
