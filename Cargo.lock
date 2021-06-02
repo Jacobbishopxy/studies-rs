@@ -4079,7 +4079,21 @@ dependencies = [
 ]
 
 [[package]]
-name = "solar-system"
+name = "solar-system-client"
+version = "0.1.0"
+
+[[package]]
+name = "solar-system-rpc"
+version = "0.1.0"
+dependencies = [
+ "prost",
+ "prost-types",
+ "tonic",
+ "tonic-build",
+]
+
+[[package]]
+name = "solar-system-server"
 version = "0.1.0"
 dependencies = [
  "bigdecimal 0.1.2",
@@ -4095,10 +4109,10 @@ dependencies = [
  "rust-embed",
  "serde",
  "serde_json",
+ "solar-system-rpc",
  "tokio 1.6.1",
  "tokio-stream",
  "tonic",
- "tonic-build",
 ]
 
 [[package]]

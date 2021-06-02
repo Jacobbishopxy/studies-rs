@@ -12,10 +12,6 @@ extern crate diesel_migrations;
 pub mod conversion;
 pub mod persistence;
 
-pub mod solar_system_info {
-    tonic::include_proto!("solar_system_info");
-}
-
 use diesel::result::Error;
 use futures::Stream;
 use log::{debug, error};
@@ -26,8 +22,10 @@ use tonic::{Request, Response, Status};
 
 use crate::conversion::PlanetWrapper;
 use crate::persistence::{Conn, PgPool};
-use crate::solar_system_info::solar_system_info_server::SolarSystemInfo;
-use crate::solar_system_info::{Planet, PlanetRequest, PlanetResponse, PlanetsListResponse};
+use solar_system_rpc::solar_system_info::solar_system_info_server::SolarSystemInfo;
+use solar_system_rpc::solar_system_info::{
+    Planet, PlanetRequest, PlanetResponse, PlanetsListResponse,
+};
 
 embed_migrations!();
 

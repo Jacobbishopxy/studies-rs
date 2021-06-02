@@ -5,7 +5,7 @@ use chrono::NaiveTime;
 use rust_embed::RustEmbed;
 
 use crate::persistence::model::{PlanetEntity, SatelliteEntity};
-use crate::solar_system_info::{
+use solar_system_rpc::solar_system_info::{
     Planet as GrpcPlanet, Satellite as GrpcSatellite, Type as GrpcType,
 };
 

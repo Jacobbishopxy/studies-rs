@@ -12,7 +12,9 @@ members = [
     "news/dao",
     "news/migrations",
     "tonic-example",
-    "solar-system",
+    "solar-system/rpc",
+    "solar-system/server",
+    "solar-system/client",
 ]
 default-members = [
     "news/service"

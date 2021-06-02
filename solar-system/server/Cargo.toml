@@ -1,11 +1,10 @@
 [package]
-name = "solar-system"
+name = "solar-system-server"
 version = "0.1.0"
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+solar-system-rpc = { path = "../rpc" }
 tonic = "0.4.3"
 prost = "0.7.0"
 prost-types = "0.7.0"
@@ -22,6 +21,3 @@ log = "0.4.14"
 env_logger = "0.8.3"
 dotenv = "0.15.0"
 rust-embed = "5.9.0"
-
-[build-dependencies]
-tonic-build = "0.4.2"

@@ -1,7 +1,10 @@
 use log::info;
-use solar_system::solar_system_info::solar_system_info_server::SolarSystemInfoServer;
-use solar_system::{persistence::create_connection_pool, run_migrations, SolarSystemInfoService};
 use tonic::transport::Server;
+
+use solar_system_rpc::solar_system_info::solar_system_info_server::SolarSystemInfoServer;
+use solar_system_server::{
+    persistence::create_connection_pool, run_migrations, SolarSystemInfoService,
+};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
