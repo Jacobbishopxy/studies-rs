@@ -8,7 +8,7 @@ use solar_system_server::{
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    dotenv::from_path("solar-system/.env").ok();
+    dotenv::from_path("solar-system/server/.env").ok();
     env_logger::init();
 
     info!("Starting Solar System info server");

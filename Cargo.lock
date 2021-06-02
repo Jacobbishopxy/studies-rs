@@ -4079,10 +4079,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "solar-system-client"
-version = "0.1.0"
-
-[[package]]
 name = "solar-system-rpc"
 version = "0.1.0"
 dependencies = [

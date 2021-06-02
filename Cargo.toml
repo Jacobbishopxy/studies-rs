@@ -14,7 +14,6 @@ members = [
     "tonic-example",
     "solar-system/rpc",
     "solar-system/server",
-    "solar-system/client",
 ]
 default-members = [
     "news/service"
