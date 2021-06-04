@@ -14,6 +14,7 @@ members = [
     "tonic-example",
     "solar-system/rpc",
     "solar-system/server",
+    "docker-simple",
 ]
 default-members = [
     "news/service"

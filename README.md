@@ -8,10 +8,12 @@
 - [news](./news/README.md)
 - [tonic-example](./tonic-example/README.md)
 - [solar-system](./solar-system/README.md)
+- [docker-simple](./docker-simple/README.md)
 
 ## To test
 
 - [web-cors](https://github.com/actix/examples/tree/master/security/web-cors)
+- [kafka-fun](https://github.com/diegopacheco/rust-playground/tree/master/kafka-fun)
 
 ## To read
 
