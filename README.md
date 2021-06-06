@@ -9,6 +9,7 @@
 - [tonic-example](./tonic-example/README.md)
 - [solar-system](./solar-system/README.md)
 - [docker-simple](./docker-simple/README.md)
+- [actix-example](./actix-example/README.md)
 
 ## To test
 
@@ -18,8 +19,9 @@
 ## To read
 
 - [GraphQL in Rust](https://romankudryashov.com/blog/2020/12/graphql-rust/#_conclusion)
-- [Yew Megatutorial Series' Articles](https://dev.to/davidedelpapa/series/5838)
-- [rust-playground](https://github.com/diegopacheco/rust-playground)
+- [Web services' config management](https://blog.logrocket.com/configuration-management-in-rust-web-services/)
+- [Web services' JSON input validation](https://blog.logrocket.com/json-input-validation-in-rust-web-services/)
+- [File upload and download](https://blog.logrocket.com/file-upload-and-download-in-rust/)
 
 ## To learn
 
@@ -33,6 +35,7 @@
 - [rdkafka](https://github.com/fede1024/rust-rdkafka)
 - [algorithms](https://github.com/EbTech/rust-algorithms)
 - [yew](https://github.com/yewstack/yew)
+- [yewprint](https://github.com/cecton/yewprint)
 - [tonic](https://github.com/hyperium/tonic)
 
 ## Examples

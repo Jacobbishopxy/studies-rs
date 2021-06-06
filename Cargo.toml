@@ -15,6 +15,7 @@ members = [
     "solar-system/rpc",
     "solar-system/server",
     "docker-simple",
+    "actix-example",
 ]
 default-members = [
     "news/service"

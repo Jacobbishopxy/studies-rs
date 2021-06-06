@@ -97,6 +97,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "actix-example"
+version = "0.1.0"
+dependencies = [
+ "actix-identity",
+ "actix-session",
+ "actix-web",
+ "env_logger",
+ "rand 0.8.3",
+]
+
+[[package]]
 name = "actix-http"
 version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -244,6 +255,21 @@ checksum = "0052435d581b5be835d11f4eb3bce417c8af18d87ddf8ace99f8e67e595882bb"
 dependencies = [
  "futures-util",
  "pin-project 0.4.28",
+]
+
+[[package]]
+name = "actix-session"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "559b815f2b3ad84f8a17256069d7df16c3ee8069635c86758729521d62ca891d"
+dependencies = [
+ "actix-service",
+ "actix-web",
+ "derive_more",
+ "futures-util",
+ "serde",
+ "serde_json",
+ "time 0.2.26",
 ]
 
 [[package]]
