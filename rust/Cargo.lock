@@ -1807,6 +1807,10 @@ version = "0.1.0"
 [[package]]
 name = "frontend-wasm"
 version = "0.1.0"
+dependencies = [
+ "wasm-bindgen",
+ "yew",
+]
 
 [[package]]
 name = "fuchsia-cprng"
