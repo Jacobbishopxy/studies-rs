@@ -10,6 +10,7 @@ import (
 	"postapi/app/database"
 )
 
+// 主函数
 func main() {
 	app := app.New()
 	app.DB = &database.DB{}
@@ -22,6 +23,7 @@ func main() {
 	check(err)
 }
 
+// 错误退出进程
 func check(e error) {
 	if e != nil {
 		log.Panicln(e)

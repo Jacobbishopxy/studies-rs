@@ -6,11 +6,13 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// App 结构体，存储路由结构体与自定义数据库接口类型
 type App struct {
 	Router *mux.Router
 	DB     database.PostDB
 }
 
+// App 结构体的构造器
 func New() *App {
 	a := &App{Router: mux.NewRouter()}
 
@@ -18,6 +20,7 @@ func New() *App {
 	return a
 }
 
+// App 路由，注册各个路由的具体业务
 func (a *App) initRoutes() {
 	a.Router.HandleFunc("/", a.IndexHandler()).Methods("GET")
 	a.Router.HandleFunc("/api/posts", a.CreatePostHandler()).Methods("POST")

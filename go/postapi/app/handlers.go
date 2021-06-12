@@ -8,12 +8,14 @@ import (
 	"postapi/app/models"
 )
 
+// index 的路由
 func (a *App) IndexHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Welcome to Post API")
 	}
 }
 
+// 创建 Post 的路由
 func (a *App) CreatePostHandler() http.HandlerFunc {
 	return func(rw http.ResponseWriter, r *http.Request) {
 		req := models.PostRequest{}
@@ -45,6 +47,7 @@ func (a *App) CreatePostHandler() http.HandlerFunc {
 	}
 }
 
+// 获取 Posts 的路由
 func (a *App) GetPostsHandler() http.HandlerFunc {
 	return func(rw http.ResponseWriter, r *http.Request) {
 		posts, err := a.DB.GetPosts()
