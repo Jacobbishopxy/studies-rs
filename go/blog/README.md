@@ -4,10 +4,22 @@
 
 ## 依赖
 
-- gin:
+- gin: web 架构
 
   ```sh
   go get github.com/gin-gonic/gin
+  ```
+
+- gorm: ORM
+
+  ```sh
+  go get gorm.io/driver/mysql gorm.io/gorm
+  ```
+
+- godotenv: env 文件变量
+
+  ```sh
+  go get github.com/joho/godotenv
   ```
 
 ## 设计
