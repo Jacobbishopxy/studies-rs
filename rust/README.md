@@ -22,6 +22,7 @@
 - [Web services' config management](https://blog.logrocket.com/configuration-management-in-rust-web-services/)
 - [Web services' JSON input validation](https://blog.logrocket.com/json-input-validation-in-rust-web-services/)
 - [File upload and download](https://blog.logrocket.com/file-upload-and-download-in-rust/)
+- [MoonZoon Dev News Series](https://dev.to/martinkavik/series/11511)
 
 ## To learn
 

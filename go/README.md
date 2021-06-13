@@ -3,6 +3,7 @@
 - [static-file-server](./static-file-server/README.md)
 - [postapi](./postapi/README.md)
 - [blog](./blog/README.md)
+- [fintech-banking-app](./fintech-banking-app/README.md)
 
 ## To test
 

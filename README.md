@@ -18,3 +18,4 @@
   - [static-file-server](./go/static-file-server/README.md)
   - [postapi](./go/postapi/README.md)
   - [blog](./go/blog/README.md)
+  - [fintech-banking-app](./go/fintech-banking-app/README.md)
