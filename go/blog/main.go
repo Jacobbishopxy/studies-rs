@@ -1,24 +1,28 @@
 package main
 
 import (
+	"blog/api/controller"
+	"blog/api/repository"
+	"blog/api/routes"
+	"blog/api/service"
 	"blog/infrastructure"
-	"net/http"
-
-	"github.com/gin-gonic/gin"
+	"blog/models"
 )
 
 func main() {
-	// gin router 初始化
-	router := gin.Default()
-	// index 路由
-	router.GET("/", func(context *gin.Context) {
-		// 加载 env
-		infrastructure.LoadEnv()
-		// 数据库练级
-		infrastructure.NewDatabase()
+	// 加载 env
+	infrastructure.LoadEnv()
 
-		context.JSON(http.StatusOK, gin.H{"data": "Hello World!"})
-	})
-	// 启动服务
-	router.Run(":8080")
+	router := infrastructure.NewGinRouter()
+	db := infrastructure.NewDatabase()
+	postRepository := repository.NewPostRepository(&db)
+	postService := service.NewPostService(&postRepository)
+	postController := controller.NewPostController(&postService)
+	postRoute := routes.NewPostRoute(&postController, &router)
+
+	postRoute.Setup()
+
+	db.DB.AutoMigrate(&models.Post{})
+
+	router.Gin.Run(":8080")
 }
