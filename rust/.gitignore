@@ -1,8 +1,4 @@
-.vscode
-
 /target
-
-*.code-workspace
 
 actix_web-async_graphql_rbatis/backend/.env
 simple-auth-server/.env

@@ -4,7 +4,7 @@
 
 ## 依赖
 
-- gin: web 架构
+- gin: web 框架
 
   ```sh
   go get github.com/gin-gonic/gin
@@ -23,3 +23,18 @@
   ```
 
 ## 设计
+
+- api：业务相关
+
+  - controller：web 逻辑层
+  - repository：数据库逻辑
+  - routes：api 路由集（）
+  - service：连接层（controller & repository）
+
+- infrastructure
+
+- models
+
+- util
+
+- main.go

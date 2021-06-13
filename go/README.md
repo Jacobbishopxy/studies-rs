@@ -2,6 +2,7 @@
 
 - [static-file-server](./static-file-server/README.md)
 - [postapi](./postapi/README.md)
+- [blog](./blog/README.md)
 
 ## To test
 
