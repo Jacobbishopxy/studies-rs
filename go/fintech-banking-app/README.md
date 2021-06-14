@@ -2,7 +2,7 @@
 
 [原文地址](https://dev.to/duomly/series/6782)
 
-## 依赖
+## 工具
 
 - migrate: migration cli
 
@@ -14,4 +14,18 @@
 
   ```sh
   go get github.com/kyleconroy/sqlc/cmd/sqlc
+  ```
+
+## 依赖
+
+- pq: postgres driver
+
+  ```sh
+  go get -u github.com/lib/pq
+  ```
+
+- testify: test
+
+  ```sh
+  go get github.com/stretchr/testify
   ```
