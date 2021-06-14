@@ -50,6 +50,9 @@ type TransferTxResult struct {
 	ToEntry     Entry    `json:"to_entry"`
 }
 
+// 用于从 `TransferTx` 函数中获取 tansaction 名称
+var txKey = struct{}{}
+
 func (store *Store) TransferTx(
 	ctx context.Context,
 	arg TransferTxParams,
@@ -81,10 +84,29 @@ func (store *Store) TransferTx(
 			AccountID: arg.ToAccountID,
 			Amount:    arg.Amount,
 		})
+		if err != nil {
+			return err
+		}
 
-		return nil
+		// 从 account1 中转出
+		result.FromAccount, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
+			ID:     arg.FromAccountID,
+			Amount: -arg.Amount,
+		})
+		if err != nil {
+			return err
+		}
 
-		// todo: 更新 account balance (involves locking and preventing potential deadlock)
+		// 转入进 account2 中
+		result.ToAccount, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
+			ID:     arg.ToAccountID,
+			Amount: arg.Amount,
+		})
+		if err != nil {
+			return err
+		}
+
+		return err
 	})
 
 	return result, err
