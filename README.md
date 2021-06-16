@@ -19,3 +19,4 @@
   - [postapi](./go/postapi/README.md)
   - [blog](./go/blog/README.md)
   - [fintech-banking-app](./go/fintech-banking-app/README.md)
+  - [design-patterns](./go/design-patterns/README.md)
