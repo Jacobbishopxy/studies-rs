@@ -2,11 +2,20 @@
 
 [原文地址](https://dev.to/gopher/go-all-design-patterns-code-with-workflow-ea1)
 
-1. [Command](./command/main.go)
-   ![Command.png](./command/Command.png)
+1. [command](./command/main.go)
+   ![command.png](./command/command.png)
 
-1. [Interpreter](./interpreter/main.go)
-   ![Interpreter.png](./interpreter/Interpreter.png)
+1. [interpreter](./interpreter/main.go)
+   ![interpreter.png](./interpreter/interpreter.png)
 
-1. [Iterator](./iterator/main.go)
-   ![Iterator.png](./iterator/Iterator.png)
+1. [iterator](./iterator/main.go)
+   ![iterator.png](./iterator/iterator.png)
+
+1. [mediator](./mediator/main.go)
+   ![mediator.png](./mediator/mediator.png)
+
+1. [memento](./memento/main.go)
+   ![memento.png](./memento/memento.png)
+
+1. [observer](./observer/main.go)
+   ![observer.png](./observer/observer.png)
