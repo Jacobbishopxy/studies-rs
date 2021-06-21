@@ -10,6 +10,7 @@
 - [solar-system](./solar-system/README.md)
 - [docker-simple](./docker-simple/README.md)
 - [actix-example](./actix-example/README.md)
+- [rocket-example](./rocket-example/README.md)
 
 ## To test
 
@@ -18,6 +19,8 @@
 
 ## To read
 
+- [Getting started with MongoDB and Redis in Rust](https://romankudryashov.com/blog/2021/06/mongodb-redis-rust/)
+- [Rust GAT](https://rustmagazine.github.io/rust_magazine_2021/chapter_5/rust-gat.html)
 - [GraphQL in Rust](https://romankudryashov.com/blog/2020/12/graphql-rust/#_conclusion)
 - [Web services' config management](https://blog.logrocket.com/configuration-management-in-rust-web-services/)
 - [Web services' JSON input validation](https://blog.logrocket.com/json-input-validation-in-rust-web-services/)
