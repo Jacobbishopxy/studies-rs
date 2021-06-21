@@ -19,3 +19,12 @@
 
 1. [observer](./observer/main.go)
    ![observer.png](./observer/observer.png)
+
+1. [state](./state/main.go)
+   ![state.png](./state/state.png)
+
+1. [strategy](./strategy/main.go)
+   ![strategy.png](./strategy/strategy.png)
+
+1. [visitor](./visitor/main.go)
+   ![visitor.png](./visitor/visitor.png)
