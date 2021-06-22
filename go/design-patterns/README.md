@@ -2,6 +2,8 @@
 
 [原文地址](https://dev.to/gopher/go-all-design-patterns-code-with-workflow-ea1)
 
+## Behavioral Patterns
+
 1. [command](./command/main.go)
    ![command.png](./command/command.png)
 
@@ -28,3 +30,16 @@
 
 1. [visitor](./visitor/main.go)
    ![visitor.png](./visitor/visitor.png)
+
+## Creational Patterns
+
+1. [abstract_factory](./abstract_factory/main.go)
+   ![abstract_factory.png](./abstract_factory/abstract_factory.png)
+
+1. [builder](./builder/main.go)
+   ![builder.png](./builder/builder.png)
+
+1. [factory_method](./factory_method/main.go)
+   ![factory_method.png](./factory_method/factory_method.png)
+
+## Structural Patterns
