@@ -42,4 +42,10 @@
 1. [factory_method](./factory_method/main.go)
    ![factory_method.png](./factory_method/factory_method.png)
 
+1. [prototype](./prototype/main.go)
+   ![prototype.png](./prototype/prototype.png)
+
+1. [singleton](./singleton/main.go)
+   ![singleton.png](./singleton/singleton.png)
+
 ## Structural Patterns
