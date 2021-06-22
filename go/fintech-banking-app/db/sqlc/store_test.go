@@ -8,6 +8,9 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// 用于从 `TransferTx` 函数中获取 tansaction 名称
+var txKey = struct{}{}
+
 func TestTransferTx(t *testing.T) {
 	store := NewStore(testDB)
 

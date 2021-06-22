@@ -16,6 +16,33 @@
   go get github.com/kyleconroy/sqlc/cmd/sqlc
   ```
 
+- gomock: mock db
+
+  ```sh
+  go get github.com/golang/mock/mockgen
+  ```
+
+  ```sh
+  vi ~/.zshrc
+  ```
+
+  文件内容：
+
+  ```sh
+  export PATH=$PATH:~/go/bin
+  ```
+
+  执行
+
+  ```sh
+  source ~/.zshrc
+  which mockgen
+  ```
+
+  ```sh
+  mockgen fintech-banking-app/db/sqlc Store
+  ```
+
 ## 依赖
 
 - pq: postgres driver
@@ -28,6 +55,18 @@
 
   ```sh
   go get github.com/stretchr/testify
+  ```
+
+- gin: web framework
+
+  ```sh
+  go get github.com/gin-gonic/gin
+  ```
+
+- viper: env file
+
+  ```sh
+  go get github.com/spf13/viper
   ```
 
 ## 隔离等级与读取现象
@@ -104,3 +143,43 @@ Action 基本上是一个独立的命令，像是一个 `test_server.sh` 的脚�
 ### Summary
 
 ![github_actions_summary](./img/github_actions_summary.png)
+
+## Mock DB
+
+使用 Mock DB 的几个原因：
+
+- 首先，帮助我们可以更简单的编写出独立的测试，因为每个测试将会用到隔离的 mock DB 来存储数据，即消除了测试之间的相互影响。如果使用的是真实 DB，所有的测试都会在同一个地方读写数据，这样就很难避免冲突，特别是一个大的项目中携带者巨大的基础代码。
+- 其次，测试将会更快的运行，因为它们不再需要花时间与 DB 沟通并等待回应。所有的行为将在内存与统一过程中被执行。
+- 第三也是最重要的原因就是：它让我们编写 100% 覆盖率的测试。通过一个 mock DB，我们可以轻松的创造并测试一些边缘情况，例如一个意外的错误，或者一个连接失败，这些都是在使用真实 DB 情况中不能被达到的。
+
+### 生成 Mock DB
+
+`mockgen` 给予用户两种生成 mocks 的方式。`source mode` 将会从一个源文件生成 mock 接口。
+
+当源文件引入了其它包的时候这将变得更复杂，这也是我们在真实项目中会遇到的情况。
+
+这种情况下，更好地办法是使用 `reflect mode`，即我们仅需提供包名称以及接口，便可以让 mockgen 自动使用反射。
+
+执行：
+
+```sh
+mockgen fintech-banking-app/db/sqlc Store
+```
+
+第一个参数为 `Store` 接口的导入路径。第二个参数为接口的名称。
+
+```sh
+mockgen -destination db/mock/store.go fintech-banking-app/db/sqlc Store
+```
+
+使用 `-destination` 用于指定生成的文件。
+
+生成的 `db/mock/store.go` 文件中有两个重要的结构体：`MockStore` 与 `MockStoreMockRecorder`。
+
+前者实现了 `Store` 接口所需要的所有函数。后者可以指定函数被调用的次数，以及带有何种参数。
+
+由于生成的 package 名称为 `mock_sqlc` 并不符合惯用法，加上 `-package` 可以自定义命名。
+
+```sh
+mockgen -package mockdb -destination db/mock/store.go fintech-banking-app/db/sqlc Store
+```

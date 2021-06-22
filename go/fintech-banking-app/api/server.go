@@ -10,11 +10,12 @@ import (
 // `db.Store` 即之前所编写的实现。在处理客户端的 API 请求时，它允许我们与进行数据库交互。
 // `gin.Enine` 将帮助我们发送每个 API 请求至正确的函数进行处理加工。
 type Server struct {
-	store  *db.Store
+	store  db.Store
 	router *gin.Engine
 }
 
-func NewServer(store *db.Store) *Server {
+// 入参 store 为数据库 interface，即真实 DB 与 Mock DB 所实现的接口
+func NewServer(store db.Store) *Server {
 	server := &Server{store: store}
 	router := gin.Default()
 
