@@ -29,3 +29,78 @@
   ```sh
   go get github.com/stretchr/testify
   ```
+
+## 隔离等级与读取现象
+
+1. 数据库事务的 ACID 属性：
+
+   - `Atomicity` 原子性
+   - `Consistency` 持续性
+   - `Isolation` 隔离性：作为数据库事务属性的最高等级，用于确保所有的并发事务不会被互相影响
+   - `Durability` 持久性
+
+1. 4 种读取现象
+
+   - `dirty read`：发生在当一个事务读取一些由其它并发事务所写的数据，并且还未被提交时。这很不好，因为我们不知道其它事务最终是否会提交或者回滚。因此我们可能会读取到错误的数据，当回滚出现时。
+   - `non-repeatable read`：当一个事务读取相同的记录两次并发现不同的值，因为该行在第一次读取后被其它事务所修改了。
+   - `phantom read`：与前者类似，影响的是查找多行而不是单行。这种情况下，相同的查询被重复执行后，返回的却是不同的行，这是因为其它的事务近期做了一些改变，例如插入新行或是删除已有行。
+   - `serialization anomaly`：一组并发提交的事务，如果我们尝试以任何顺序运行并且它们之间没有重叠，它们不能被完成。
+
+1. 4 种隔离等级
+
+   - `read uncommitted`：最低等级的隔离。该等级下的事务可以看到其它事务的未被提交的数据，因此允许 `dirty read` 现象出现。
+   - `read committed`：事务只能看到其它事务提交后的数据。因此 `dirty read` 不可能出现。
+   - `repeatable read`：确保相同的查询请求将会返回同样的结果，无论它被执行了多少次，即使有其它的并发事务提交了新的改动。
+   - `serializable`：最高等级的隔离。并发事务运行在这个等级被保证了：如果它们是以某种顺序运行并且之间没用重叠，那么返回的结果就是相同的。基本上就意味着存在至少一种方法来排序这些并发事务，使得它们的结果与一个接着一个的运行的结果相同。
+
+1. 结论：
+
+   - MySql 的 隔离性：![isolation_levels_in_mysql](./img/isolation_levels_in_mysql.png)
+   - PostgreSql 的 隔离性：![isolation_levels_in_postgresql](./img/isolation_levels_in_postgresql.png)
+   - 两者间的比较：![compare_mysql_vs_postgres](./img/compare_mysql_vs_postgres.png)
+
+1. 总结：需要记住的最重要的一点就是当使用高隔离等级可能会出现错误、超时、或者甚至死锁。因此我们需要小心的为我们的事务实现一个重试机制。另外不同的数据库引擎可能有不同的隔离等级实现。所以确保你小心的阅读文档，并在写代码之前独自尝试一下。
+
+## 设置 Github Actions 使 Go + Postgres 运行自动测试
+
+**Continuos integration (CI)**是软件开发过程中的一个重要部分，它集成了由团队合作所造成共享代码仓库中的持续性的改动。为了确保高质量的代码并且减少潜在错误，每个集成通常都会被自动构建和测试的工具所验证。
+
+### Workflow
+
+为了使用 Github Actions，我们需要定义一个工作流 workflow。它基本上是由一个或者多个工作而组成的一个自动化过程。它可以由以下三种方式触发：
+
+- 通过一个 Github 仓库的事件
+- 通过设定一个重复的时间表
+- 通过 UI 手动点击
+
+![github_actions_workflow](./img/github_actions_workflow.png)
+
+### Runner
+
+为了运行任务，我们必须为每个任务都指定一个运行器 runner。一个 runner 就是一个监听可行任务的简单的服务，并且它每次只会运行一个任务。我们可以直接使用 Github 的 runner，或者指定你自己的 runner。
+
+![github_actions_runner](./img/github_actions_runner.png)
+
+Runners 会运行任务，接着报告进程，日志以及返回的结果至 Github，这样我们便可以在 repo 的 UI 上轻松地查看。
+
+### Job
+
+一个任务 job 是一个将会被执行在同一个 runner 上的步骤的集合。通常所有在 workflow 的任务会并行执行，除非当你某些任务依赖于其它的任务，这时就会顺序运行。
+
+![github_actions_job](./img/github_actions_job.png)
+
+通过 `needs` 关键字告诉 `test` 任务是依赖于 `build` 任务的，这样就能在成功构建后再进行进行测试。
+
+### Step
+
+步骤 steps 是独立的顺序运行的任务 tasks，在一个 Job 中一个接着一个。一个 step 可以包含一个或者多个行动 actions。
+
+![github_actions_step](./img/github_actions_step.png)
+
+Action 基本上是一个独立的命令，像是一个 `test_server.sh` 的脚本。如果一个步骤中包含多个 actions，它们则会被顺序运行。
+
+一个有趣的事情就是 action 是可以被重复使用的。因此如果某人已经编写了一个我们所需的 github action，我们实际上是可以将其使用于我们的工作流中。
+
+### Summary
+
+![github_actions_summary](./img/github_actions_summary.png)
