@@ -4,6 +4,8 @@ import (
 	db "fintech-banking-app/db/sqlc"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
+	"github.com/go-playground/validator/v10"
 )
 
 // 定义 server 结构体
@@ -19,11 +21,18 @@ func NewServer(store db.Store) *Server {
 	server := &Server{store: store}
 	router := gin.Default()
 
+	// 将自定义 validator 引入 Gin 的 validator
+	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
+		// 注册 currency 的 validator
+		v.RegisterValidation("currency", validCurrency)
+	}
+
 	// 传入一个或多个 handler 函数。
 	// 只有最后的函数为 handler，前面部分的函数皆为 middlewares
 	router.POST("/accounts", server.createAccount)
 	router.GET("/accounts/:id", server.getAccount)
 	router.GET("/accounts", server.listAccount)
+	router.POST("/transfers", server.createTransfer)
 
 	server.router = router
 	return server

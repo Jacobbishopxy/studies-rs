@@ -10,8 +10,9 @@ import (
 
 // http request 所需要的参数
 type createAccountRequest struct {
-	Owner    string `json:"owner" binding:"required"`
-	Currency string `json:"currency" binding:"required,oneof=USD EUR"`
+	Owner string `json:"owner" binding:"required"`
+	// 当用户自定义的 currency validator 注册进 Gin 后，binding 允许使用
+	Currency string `json:"currency" binding:"required,currency"`
 }
 
 func (server *Server) createAccount(ctx *gin.Context) {
