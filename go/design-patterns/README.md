@@ -64,3 +64,12 @@
 
 1. [decorator](./decorator/main.go)
    ![decorator.png](./decorator/decorator.png)
+
+1. [facade](./facade/main.go)
+   ![facade.png](./facade/facade.png)
+
+1. [flyweight](./flyweight/main.go)
+   ![flyweight.png](./flyweight/flyweight.png)
+
+1. [proxy](./proxy/main.go)
+   ![proxy.png](./proxy/proxy.png)
