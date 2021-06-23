@@ -12,8 +12,12 @@ import (
 )
 
 func createRandomAccount(t *testing.T) Account {
+	// 更新 migration 至 v2 后，由于添加了外键导致之前的测试不能通过。
+	// 因此需要在测试时添加 user 并绑定 account
+	user := createRandomUser(t)
+
 	arg := CreateAccountParams{
-		Owner:    util.RandomOwner(),
+		Owner:    user.Username,
 		Balance:  util.RandomMoney(),
 		Currency: util.RandomCurrency(),
 	}

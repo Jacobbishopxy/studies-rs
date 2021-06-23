@@ -8,30 +8,23 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// 用于从 `TransferTx` 函数中获取 tansaction 名称
-var txKey = struct{}{}
-
 func TestTransferTx(t *testing.T) {
 	store := NewStore(testDB)
 
 	account1 := createRandomAccount(t)
 	account2 := createRandomAccount(t)
-	fmt.Println(">> before: ", account1.Balance, account2.Balance)
+	fmt.Println(">> before:", account1.Balance, account2.Balance)
 
-	n := 2
+	n := 5
 	amount := int64(10)
 
-	// 运行 n 个并行的事务；创建两个通道用于收集错误和结果
 	errs := make(chan error)
 	results := make(chan TransferTxResult)
 
+	// run n concurrent transfer transaction
 	for i := 0; i < n; i++ {
-		txName := fmt.Sprintf("tx %d", i+1)
-
 		go func() {
-			ctx := context.WithValue(context.Background(), txKey, txName)
-
-			result, err := store.TransferTx(ctx, TransferTxParams{
+			result, err := store.TransferTx(context.Background(), TransferTxParams{
 				FromAccountID: account1.ID,
 				ToAccountID:   account2.ID,
 				Amount:        amount,
@@ -42,7 +35,7 @@ func TestTransferTx(t *testing.T) {
 		}()
 	}
 
-	// 检查结果
+	// check results
 	existed := make(map[int]bool)
 
 	for i := 0; i < n; i++ {
@@ -52,7 +45,7 @@ func TestTransferTx(t *testing.T) {
 		result := <-results
 		require.NotEmpty(t, result)
 
-		// 检查 transfer
+		// check transfer
 		transfer := result.Transfer
 		require.NotEmpty(t, transfer)
 		require.Equal(t, account1.ID, transfer.FromAccountID)
@@ -64,7 +57,7 @@ func TestTransferTx(t *testing.T) {
 		_, err = store.GetTransfer(context.Background(), transfer.ID)
 		require.NoError(t, err)
 
-		// 检查 entries
+		// check entries
 		fromEntry := result.FromEntry
 		require.NotEmpty(t, fromEntry)
 		require.Equal(t, account1.ID, fromEntry.AccountID)
@@ -85,7 +78,7 @@ func TestTransferTx(t *testing.T) {
 		_, err = store.GetEntry(context.Background(), toEntry.ID)
 		require.NoError(t, err)
 
-		// 检查 accounts
+		// check accounts
 		fromAccount := result.FromAccount
 		require.NotEmpty(t, fromAccount)
 		require.Equal(t, account1.ID, fromAccount.ID)
@@ -94,40 +87,40 @@ func TestTransferTx(t *testing.T) {
 		require.NotEmpty(t, toAccount)
 		require.Equal(t, account2.ID, toAccount.ID)
 
-		// 检查 account balance
+		// check balances
+		fmt.Println(">> tx:", fromAccount.Balance, toAccount.Balance)
+
 		diff1 := account1.Balance - fromAccount.Balance
 		diff2 := toAccount.Balance - account2.Balance
 		require.Equal(t, diff1, diff2)
 		require.True(t, diff1 > 0)
-		require.True(t, diff1%amount == 0)
+		require.True(t, diff1%amount == 0) // 1 * amount, 2 * amount, 3 * amount, ..., n * amount
 
 		k := int(diff1 / amount)
 		require.True(t, k >= 1 && k <= n)
-
 		require.NotContains(t, existed, k)
 		existed[k] = true
 	}
 
-	// 检查最终的更新后的 balance
+	// check the final updated balance
 	updatedAccount1, err := store.GetAccount(context.Background(), account1.ID)
 	require.NoError(t, err)
 
 	updatedAccount2, err := store.GetAccount(context.Background(), account2.ID)
 	require.NoError(t, err)
 
-	fmt.Println(">> after: ", updatedAccount1.Balance, updatedAccount2.Balance)
+	fmt.Println(">> after:", updatedAccount1.Balance, updatedAccount2.Balance)
 
 	require.Equal(t, account1.Balance-int64(n)*amount, updatedAccount1.Balance)
 	require.Equal(t, account2.Balance+int64(n)*amount, updatedAccount2.Balance)
 }
 
-// 该函数为了验证死锁
 func TestTransferTxDeadlock(t *testing.T) {
 	store := NewStore(testDB)
 
 	account1 := createRandomAccount(t)
 	account2 := createRandomAccount(t)
-	fmt.Println(">> before: ", account1.Balance, account2.Balance)
+	fmt.Println(">> before:", account1.Balance, account2.Balance)
 
 	n := 10
 	amount := int64(10)
@@ -158,14 +151,14 @@ func TestTransferTxDeadlock(t *testing.T) {
 		require.NoError(t, err)
 	}
 
-	// 检查更新后的最终账户
+	// check the final updated balance
 	updatedAccount1, err := store.GetAccount(context.Background(), account1.ID)
 	require.NoError(t, err)
 
 	updatedAccount2, err := store.GetAccount(context.Background(), account2.ID)
 	require.NoError(t, err)
 
-	fmt.Println(">> after: ", updatedAccount1.Balance, updatedAccount2.Balance)
+	fmt.Println(">> after:", updatedAccount1.Balance, updatedAccount2.Balance)
 	require.Equal(t, account1.Balance, updatedAccount1.Balance)
 	require.Equal(t, account2.Balance, updatedAccount2.Balance)
 }
