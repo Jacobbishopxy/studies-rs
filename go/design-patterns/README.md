@@ -49,3 +49,18 @@
    ![singleton.png](./singleton/singleton.png)
 
 ## Structural Patterns
+
+1. [adapter_composition](./adapter_composition/main.go)
+   ![adapter_composition.png](./adapter_composition/adapter_composition.png)
+
+1. [adapter_inheritance](./adapter_inheritance/main.go)
+   ![adapter_inheritance.png](./adapter_inheritance/adapter_inheritance.png)
+
+1. [bridge](./bridge/main.go)
+   ![bridge.png](./bridge/bridge.png)
+
+1. [composite](./composite/main.go)
+   ![composite.png](./composite/composite.png)
+
+1. [decorator](./decorator/main.go)
+   ![decorator.png](./decorator/decorator.png)
