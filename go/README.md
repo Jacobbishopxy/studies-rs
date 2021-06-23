@@ -4,7 +4,6 @@
 - [postapi](./postapi/README.md)
 - [blog](./blog/README.md)
 - [fintech-banking-app](./fintech-banking-app/README.md)
-- [design-patterns](./design-patterns/README.md)
 
 ## To test
 
