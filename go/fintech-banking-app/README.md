@@ -183,3 +183,24 @@ mockgen -destination db/mock/store.go fintech-banking-app/db/sqlc Store
 ```sh
 mockgen -package mockdb -destination db/mock/store.go fintech-banking-app/db/sqlc Store
 ```
+
+## 如何存储密码
+
+添加 `cost` 和 `salt` 用于生成最终的哈希字符串：
+
+![securely_store_password](./img/securely_store_password.png)
+
+该哈希字符串由 4 个部分组成：
+
+- 第一部分为 `hash algorithm identifier` 哈希算法标识。这里 `2A` 即 `bcrypt` 算法。
+- 第二部分为 `cost`。本例中为 `10`，意味着将会有 `2^10 = 1024` 种钥匙解释。
+- 第三部分为 `salt` 拥有 `16 bytes` 长度，或者 `128 bits`。它是由 `base64` 格式来进行编码，将会生成 `22` 个字符的字符串。
+- 最后部分为 `24 bytes` 的哈希值，编码为 `31` 个字符。
+
+这四部分会串联在一起形成一个哈希字符串，并最终将会在数据库中储存该哈希字符串。
+
+![securely_store_password2](./img/securely_store_password2.png)
+
+如何验证用户输入的密码是正确的呢？首先我们通过 `username` 在数据库中找到 `hashed_password`。接着使用 `hashed_password` 中的 `cost` 和 `salt` 作为入参来哈希用户输入进 `bcrypt` 中的 `naked_password`。其输出结果将会变为另一个哈希值。接着比较这两个哈希值，如果一致，则密码正确。
+
+![securely_store_password3](./img/securely_store_password3.png)

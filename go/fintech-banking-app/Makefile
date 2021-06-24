@@ -1,3 +1,8 @@
+ifneq (,$(wildcard ./app.env))
+    include app.env
+    export
+endif
+
 postgres:
 	docker run --name postgres12 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:12-alpine
 
@@ -8,16 +13,16 @@ dropdb:
 	docker exec -it postgres12 dropdb simple_bank
 
 migrateup:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
+	migrate -path db/migration -database "${DB_SOURCE}" -verbose up
 
 migratedown:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
+	migrate -path db/migration -database "${DB_SOURCE}" -verbose down
 
 migrateup1:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up 1
+	migrate -path db/migration -database "${DB_SOURCE}" -verbose up 1
 
 migratedown1:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down 1
+	migrate -path db/migration -database "${DB_SOURCE}" -verbose down 1
 
 sqlc:
 	sqlc generate
@@ -31,4 +36,4 @@ server:
 mock:
 	mockgen -package mockdb -destination db/mock/store.go fintech-banking-app/db/sqlc Store
 
-.PHONY: postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 sqlc test server mock
+.PHONY: tst postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 sqlc test server mock

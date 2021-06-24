@@ -27,10 +27,9 @@ func NewServer(store db.Store) *Server {
 		v.RegisterValidation("currency", validCurrency)
 	}
 
-	// router.POST("/users", server.createUser)
-
 	// 传入一个或多个 handler 函数。
 	// 只有最后的函数为 handler，前面部分的函数皆为 middlewares
+	router.POST("/users", server.createUser)
 	router.POST("/accounts", server.createAccount)
 	router.GET("/accounts/:id", server.getAccount)
 	router.GET("/accounts", server.listAccount)

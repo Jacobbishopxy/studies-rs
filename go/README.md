@@ -9,7 +9,7 @@
 
 ## To read
 
-- [Learn Golang by building a fintech banking app](https://dev.to/duomly/series/6782)
+- [Let's Build a GraphQL Server in Go](https://w11i.me/graphql-server-go-part1)
 - [Backend master class Series](https://dev.to/techschoolguru/series/7172)
 - [The complete gRPC course Series](https://dev.to/techschoolguru/series/7311)
 - [Building Go Web Applications and Microservices Using Gin](https://semaphoreci.com/community/tutorials/building-go-web-applications-and-microservices-using-gin)
