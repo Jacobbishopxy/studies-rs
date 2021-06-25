@@ -1,10 +1,4 @@
 {
   "rust-analyzer.diagnostics.disabled": ["macro-error", "unresolved-import"],
-  "rust-analyzer.linkedProjects": ["rust/Cargo.toml"],
-  "go.testFlags": ["-v"],
-  "go.useLanguageServer": true,
-  "gopls": {
-    "experimentalWorkspaceModule": true
-  },
   "git.ignoreLimitWarning": true
 }
