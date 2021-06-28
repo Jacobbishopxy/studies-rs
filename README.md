@@ -19,6 +19,8 @@
 
 ## To read
 
+- [Rust Rocket Series](https://dev.to/davidedelpapa/series/9626)
+- [Rust + Actix + CosmosDB (MongoDB) tutorial api.](https://dev.to/jbarszczewski/rust-actix-cosmosdb-mongodb-tutorial-api-17i5)
 - [Getting started with MongoDB and Redis in Rust](https://romankudryashov.com/blog/2021/06/mongodb-redis-rust/)
 - [Rust GAT](https://rustmagazine.github.io/rust_magazine_2021/chapter_5/rust-gat.html)
 - [GraphQL in Rust](https://romankudryashov.com/blog/2020/12/graphql-rust/#_conclusion)
