@@ -4,5 +4,13 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
+chrono = { version = "0.4.19", features = ["serde"] }
+rand = "0.7.3"
 rocket = "0.4.10"
-rocket_contrib = { version = "0.4.10", features = ["helmet"] }
+rocket_contrib = { version = "0.4.10", features = ["helmet", "uuid"] }
+rust-argon2 = "0.8.3"
+serde = { version = "1.0.126", features = ["derive"] }
+uuid = { version = "0.8.2", features = ["serde", "v4"] }
+
+[dev-dependencies]
+lazy_static = "1.4.0"

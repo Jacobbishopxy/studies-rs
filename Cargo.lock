@@ -104,7 +104,7 @@ dependencies = [
  "actix-session",
  "actix-web",
  "env_logger",
- "rand 0.8.3",
+ "rand 0.8.4",
 ]
 
 [[package]]
@@ -1273,7 +1273,7 @@ dependencies = [
  "hkdf",
  "hmac",
  "percent-encoding 2.1.0",
- "rand 0.8.3",
+ "rand 0.8.4",
  "sha2",
  "time 0.1.44",
 ]
@@ -1289,7 +1289,7 @@ dependencies = [
  "hkdf",
  "hmac",
  "percent-encoding 2.1.0",
- "rand 0.8.3",
+ "rand 0.8.4",
  "sha2",
  "time 0.2.26",
  "version_check 0.9.3",
@@ -3109,7 +3109,7 @@ dependencies = [
  "num-integer",
  "num-iter",
  "num-traits",
- "rand 0.8.3",
+ "rand 0.8.4",
  "smallvec",
  "zeroize",
 ]
@@ -3635,9 +3635,9 @@ dependencies = [
 
 [[package]]
 name = "rand"
-version = "0.8.3"
+version = "0.8.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0ef9e7e66b4468674bfcb0c81af8b7fa0bb154fa9f28eb840da5c447baeb8d7e"
+checksum = "2e7573632e6454cf6b99d7aac4ccca54be06da05aca2ef7423d22d27d4d4bcd8"
 dependencies = [
  "libc",
  "rand_chacha 0.3.0",
@@ -3803,7 +3803,7 @@ dependencies = [
  "log 0.4.14",
  "once_cell",
  "py_sql",
- "rand 0.8.3",
+ "rand 0.8.4",
  "rbatis-core",
  "rbatis-macro-driver",
  "rexpr",
@@ -4032,8 +4032,14 @@ dependencies = [
 name = "rocket-tutorial"
 version = "0.1.0"
 dependencies = [
+ "chrono",
+ "lazy_static",
+ "rand 0.7.3",
  "rocket",
  "rocket_contrib",
+ "rust-argon2",
+ "serde",
+ "uuid 0.8.2",
 ]
 
 [[package]]
@@ -4063,6 +4069,7 @@ dependencies = [
  "serde",
  "serde_json",
  "time 0.1.44",
+ "uuid 0.7.4",
 ]
 
 [[package]]
@@ -4096,7 +4103,7 @@ dependencies = [
  "num-iter",
  "num-traits",
  "pem",
- "rand 0.8.3",
+ "rand 0.8.4",
  "simple_asn1",
  "subtle",
  "zeroize",
@@ -4591,7 +4598,7 @@ dependencies = [
  "once_cell",
  "parking_lot",
  "percent-encoding 2.1.0",
- "rand 0.8.3",
+ "rand 0.8.4",
  "rsa",
  "rust_decimal",
  "rustls",
@@ -4782,7 +4789,7 @@ checksum = "dac1c663cfc93810f88aed9b8941d48cabf856a1b111c29a40439018d870eb22"
 dependencies = [
  "cfg-if 1.0.0",
  "libc",
- "rand 0.8.3",
+ "rand 0.8.4",
  "redox_syscall",
  "remove_dir_all",
  "winapi 0.3.9",
@@ -5086,7 +5093,7 @@ dependencies = [
  "futures-core",
  "futures-util",
  "prost",
- "rand 0.8.3",
+ "rand 0.8.4",
  "serde",
  "serde_json",
  "tokio 1.6.1",
@@ -5105,7 +5112,7 @@ dependencies = [
  "futures-util",
  "indexmap",
  "pin-project 1.0.7",
- "rand 0.8.3",
+ "rand 0.8.4",
  "slab",
  "tokio 1.6.1",
  "tokio-stream",
@@ -5234,7 +5241,7 @@ dependencies = [
  "httparse",
  "input_buffer",
  "log 0.4.14",
- "rand 0.8.3",
+ "rand 0.8.4",
  "sha-1 0.9.6",
  "url 2.2.2",
  "utf-8",
