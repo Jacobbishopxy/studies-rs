@@ -16,7 +16,7 @@ members = [
     "solar-system/server",
     "docker-simple",
     "actix-example",
-    "rocket-example",
+    "rocket-tutorial",
 ]
 default-members = [
     "news/service"

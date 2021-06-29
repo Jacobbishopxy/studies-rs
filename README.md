@@ -10,7 +10,7 @@
 - [solar-system](./solar-system/README.md)
 - [docker-simple](./docker-simple/README.md)
 - [actix-example](./actix-example/README.md)
-- [rocket-example](./rocket-example/README.md)
+- [rocket-tutorial](./rocket-tutorial/README.md)
 
 ## To test
 
