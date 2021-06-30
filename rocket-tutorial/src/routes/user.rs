@@ -31,6 +31,7 @@ impl ApiResponse {
     }
 }
 
+/// 自定义的 Response 转为 Rocket 的 Responder
 impl<'r> Responder<'r> for ApiResponse {
     fn respond_to(self, request: &Request) -> response::Result<'r> {
         Response::build_from(self.message.respond_to(&request).unwrap())
@@ -48,7 +49,7 @@ pub fn user_list_rt(userdb: State<Users>) -> ApiResponse {
     ApiResponse::ok(json!([users.len()]))
 }
 
-#[post("/users", format = "json", data = "<user>")]
+#[post("/users", format = "json", data = "<user>")] // 数据格式：json；数据类型：user
 pub fn new_user_rt(userdb: State<Users>, user: Json<InsertableUser>) -> ApiResponse {
     let mut v = userdb.db.lock().unwrap();
     let users = &mut *v;
@@ -61,7 +62,7 @@ pub fn new_user_rt(userdb: State<Users>, user: Json<InsertableUser>) -> ApiRespo
 pub fn info_user_rt(userdb: State<Users>, id: Uuid) -> ApiResponse {
     let mut v = userdb.db.lock().unwrap();
     let users = &mut *v;
-    let pos = users
+    let pos = users // 通过 id 遍历查找 user
         .iter()
         .position(|x| x.id.to_string() == id.to_string());
 
@@ -71,6 +72,7 @@ pub fn info_user_rt(userdb: State<Users>, id: Uuid) -> ApiResponse {
     }
 }
 
+/// 更新用户名或者用户邮箱
 #[put("/users/<id>", format = "json", data = "<user>")]
 pub fn update_user_rt(userdb: State<Users>, user: Json<InsertableUser>, id: Uuid) -> ApiResponse {
     let mut v = userdb.db.lock().unwrap();
@@ -112,7 +114,8 @@ pub fn delete_user_rt(userdb: State<Users>, user: Json<UserPassword>, id: Uuid) 
     }
 }
 
-#[patch("/users/<id>", format = "json", data = "<user>")]
+/// 更新用户密码
+#[patch("/users/<id>", format = "json", data = "<user>")] // 使用 patch 更新独立项；使用 put 更新若干项
 pub fn patch_user_rt(userdb: State<Users>, user: Json<UserPassword>, id: Uuid) -> ApiResponse {
     let mut v = userdb.db.lock().unwrap();
     let users = &mut *v;
@@ -137,7 +140,8 @@ pub fn patch_user_rt(userdb: State<Users>, user: Json<UserPassword>, id: Uuid) -
     }
 }
 
-#[get("/users/<email>", rank = 2)]
+/// 通过用户邮箱获取用户信息
+#[get("/users/<email>", rank = 2)] // 由于与 `/users/<id>` 同路径，使用 rank = 2 意为解析 id 失效后的方法
 pub fn id_user_rt(userdb: State<Users>, email: String) -> ApiResponse {
     let mut v = userdb.db.lock().unwrap();
     let users = &mut *v;

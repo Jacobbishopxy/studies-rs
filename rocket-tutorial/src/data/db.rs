@@ -24,8 +24,15 @@ pub struct InsertableUser {
 }
 
 impl User {
+    /// 1. 由 20 个随机字母创建 `salt`
+    /// 2. 创建 hash 后的密码，并加盐
+    /// 3. 由 uuid v4 生成 ID 构建 User
     pub fn new(name: String, email: String, password: String) -> Self {
-        let salt: String = thread_rng().sample_iter(&Alphanumeric).take(20).collect();
+        let salt: String = thread_rng()
+            .sample_iter(&Alphanumeric)
+            .take(20)
+            .map(char::from)
+            .collect();
         let hashed_password = hash_password(&password, &salt);
 
         User {
@@ -39,19 +46,23 @@ impl User {
         }
     }
 
+    /// 由 InsertableUser 生成 User
     pub fn from_insertable(insertable: InsertableUser) -> Self {
         User::new(insertable.name, insertable.email, insertable.password)
     }
 
+    /// 密码匹配器
     pub fn match_password(&self, password: &str) -> bool {
         argon2::verify_encoded(&self.hashed_password, password.as_bytes()).unwrap()
     }
 
+    /// 密码更新
     pub fn update_password(&mut self, password: &str) {
         self.hashed_password = hash_password(&password.to_owned(), &self.salt);
         self.updated = Utc::now();
     }
 
+    /// 用户更新
     pub fn update_user(&mut self, name: &str, email: &str) {
         self.name = name.to_owned();
         self.email = email.to_owned();
@@ -72,6 +83,7 @@ pub struct ResponseUser {
 }
 
 impl ResponseUser {
+    /// 提取有效返回
     pub fn from_user(user: &User) -> Self {
         ResponseUser {
             id: user.id.to_string(),

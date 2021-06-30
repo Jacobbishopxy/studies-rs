@@ -10,6 +10,7 @@ use std::sync::{Arc, Mutex};
 pub mod data;
 mod routes;
 
+/// 遵循 ACID 原则
 pub struct Users {
     pub db: Arc<Mutex<Vec<data::db::User>>>,
 }
