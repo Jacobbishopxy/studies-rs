@@ -17,6 +17,7 @@ members = [
     "docker-simple",
     "actix-example",
     "rocket-tutorial",
+    "actix-mongodb",
 ]
 default-members = [
     "news/service"
