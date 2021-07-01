@@ -19,29 +19,30 @@
 
 ## To read
 
-- [Getting started with MongoDB and Redis in Rust](https://romankudryashov.com/blog/2021/06/mongodb-redis-rust/)
+- [How to write Full Stack Rust code](https://www.steadylearner.com/blog/read/How-to-write-Full-Stack-Rust-code)
+- [How to use NPM packages with Rust Frontend](https://www.steadylearner.com/blog/read/How-to-use-NPM-packages-with-Rust-Frontend)
+- [Fullstack Rust with Yew](https://www.steadylearner.com/blog/read/Fullstack-Rust-with-Yew)
+- [How to start Rust Chat App](https://www.steadylearner.com/blog/read/How-to-start-Rust-Chat-App)
+- [How to use gRPC with Rust Tonic and Postgres database with examples](https://dev.to/steadylearner/how-to-use-grpc-with-rust-tonic-and-postgres-database-with-examples-3dl7)
+- [A Web App in Rust](https://dev.to/krowemoh/series/9410)
 - [Rust GAT](https://rustmagazine.github.io/rust_magazine_2021/chapter_5/rust-gat.html)
 - [GraphQL in Rust](https://romankudryashov.com/blog/2020/12/graphql-rust/#_conclusion)
 - [Web services' config management](https://blog.logrocket.com/configuration-management-in-rust-web-services/)
 - [Web services' JSON input validation](https://blog.logrocket.com/json-input-validation-in-rust-web-services/)
 - [File upload and download](https://blog.logrocket.com/file-upload-and-download-in-rust/)
+- [The Algorithms - Rust](https://github.com/TheAlgorithms/Rust)
+- [Get started making desktop apps using Rust and React](https://kent.medium.com/get-started-making-desktop-apps-using-rust-and-react-78a7e07433ce)
 - [MoonZoon Dev News Series](https://dev.to/martinkavik/series/11511)
 
 ## To learn
 
-- [grpc](https://github.com/stepancheg/grpc-rust)
 - [async-graphql](https://github.com/async-graphql/async-graphql)
-- [actix-web](https://github.com/actix/actix-web)
 - [rocket](https://github.com/SergioBenitez/Rocket)
-- [diesel](https://github.com/diesel-rs/diesel)
 - [jsonwebtoken](https://github.com/Keats/jsonwebtoken)
 - [rbatis](https://github.com/rbatis/rbatis)
 - [rdkafka](https://github.com/fede1024/rust-rdkafka)
 - [algorithms](https://github.com/EbTech/rust-algorithms)
 - [yew](https://github.com/yewstack/yew)
 - [yewprint](https://github.com/cecton/yewprint)
-- [tonic](https://github.com/hyperium/tonic)
 
 ## Examples
-
-- [steadylearner/Rust-Full-Stack](https://github.com/steadylearner/Rust-Full-Stack)
