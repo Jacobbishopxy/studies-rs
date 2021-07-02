@@ -11,6 +11,7 @@
 - [docker-simple](./docker-simple/README.md)
 - [actix-example](./actix-example/README.md)
 - [rocket-tutorial](./rocket-tutorial/README.md)
+- [file-upload-download](./file-upload-download/README.md)
 
 ## To test
 
@@ -29,7 +30,6 @@
 - [GraphQL in Rust](https://romankudryashov.com/blog/2020/12/graphql-rust/#_conclusion)
 - [Web services' config management](https://blog.logrocket.com/configuration-management-in-rust-web-services/)
 - [Web services' JSON input validation](https://blog.logrocket.com/json-input-validation-in-rust-web-services/)
-- [File upload and download](https://blog.logrocket.com/file-upload-and-download-in-rust/)
 - [The Algorithms - Rust](https://github.com/TheAlgorithms/Rust)
 - [Get started making desktop apps using Rust and React](https://kent.medium.com/get-started-making-desktop-apps-using-rust-and-react-78a7e07433ce)
 - [MoonZoon Dev News Series](https://dev.to/martinkavik/series/11511)

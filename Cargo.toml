@@ -18,6 +18,7 @@ members = [
     "actix-example",
     "rocket-tutorial",
     "actix-mongodb",
+    "file-upload-download",
 ]
 default-members = [
     "news/service"

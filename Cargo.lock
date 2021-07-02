@@ -2063,6 +2063,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "file-upload-download"
+version = "0.1.0"
+dependencies = [
+ "bytes 1.0.1",
+ "futures",
+ "tokio 1.7.1",
+ "uuid 0.8.2",
+ "warp",
+]
+
+[[package]]
 name = "filetime"
 version = "0.2.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
