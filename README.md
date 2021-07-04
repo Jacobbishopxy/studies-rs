@@ -27,7 +27,6 @@
 - [How to start Rust Chat App](https://www.steadylearner.com/blog/read/How-to-start-Rust-Chat-App)
 - [How to use gRPC with Rust Tonic and Postgres database with examples](https://dev.to/steadylearner/how-to-use-grpc-with-rust-tonic-and-postgres-database-with-examples-3dl7)
 - [A Web App in Rust](https://dev.to/krowemoh/series/9410)
-- [Rust GAT](https://rustmagazine.github.io/rust_magazine_2021/chapter_5/rust-gat.html)
 - [GraphQL in Rust](https://romankudryashov.com/blog/2020/12/graphql-rust/#_conclusion)
 - [Web services' config management](https://blog.logrocket.com/configuration-management-in-rust-web-services/)
 - [Web services' JSON input validation](https://blog.logrocket.com/json-input-validation-in-rust-web-services/)
