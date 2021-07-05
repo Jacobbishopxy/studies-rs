@@ -24,6 +24,7 @@
 - [How to write Full Stack Rust code](https://www.steadylearner.com/blog/read/How-to-write-Full-Stack-Rust-code)
 - [How to use NPM packages with Rust Frontend](https://www.steadylearner.com/blog/read/How-to-use-NPM-packages-with-Rust-Frontend)
 - [Fullstack Rust with Yew](https://www.steadylearner.com/blog/read/Fullstack-Rust-with-Yew)
+- [Rust on the front-end](https://dev.to/nfrankel/rust-on-the-front-end-hen)
 - [How to start Rust Chat App](https://www.steadylearner.com/blog/read/How-to-start-Rust-Chat-App)
 - [How to use gRPC with Rust Tonic and Postgres database with examples](https://dev.to/steadylearner/how-to-use-grpc-with-rust-tonic-and-postgres-database-with-examples-3dl7)
 - [A Web App in Rust](https://dev.to/krowemoh/series/9410)
@@ -45,4 +46,19 @@
 - [yew](https://github.com/yewstack/yew)
 - [yewprint](https://github.com/cecton/yewprint)
 
-## Examples
+## Notes
+
+```n
+&str    -> String--| String::from(s) or s.to_string() or s.to_owned()
+&str    -> &[u8]---| s.as_bytes()
+&str    -> Vec<u8>-| s.as_bytes().to_vec() or s.as_bytes().to_owned()
+String  -> &str----| &s if possible* else s.as_str()
+String  -> &[u8]---| s.as_bytes()
+String  -> Vec<u8>-| s.into_bytes()
+&[u8]   -> &str----| s.to_vec() or s.to_owned()
+&[u8]   -> String--| std::str::from_utf8(s).unwrap(), but don't**
+&[u8]   -> Vec<u8>-| String::from_utf8(s).unwrap(), but don't**
+Vec<u8> -> &str----| &s if possible* else s.as_slice()
+Vec<u8> -> String--| std::str::from_utf8(&s).unwrap(), but don't**
+Vec<u8> -> &[u8]---| String::from_utf8(s).unwrap(), but don't**
+```
