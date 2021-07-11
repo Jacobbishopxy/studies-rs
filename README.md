@@ -12,6 +12,7 @@
 - [actix-example](./actix-example/README.md)
 - [rocket-tutorial](./rocket-tutorial/README.md)
 - [file-upload-download](./file-upload-download/README.md)
+- [parser-combinators](./parser-combinators/README.md)
 
 ## To test
 
@@ -20,6 +21,9 @@
 
 ## To read
 
+- [Zola Tutorial: How to use Zola the Rust based static site generator for your next small project, and deploy it on Netlify](https://dev.to/davidedelpapa/zola-tutorial-how-to-use-zola-the-rust-based-static-site-generator-for-your-next-small-project-and-deploy-it-on-netlify-375n)
+- [Introduction to Apache Arrow with Rust](https://levelup.gitconnected.com/introduction-to-apache-arrow-with-rust-394f391ea455)
+- [REST API Wrapper with Rust](https://dev.to/rogertorres/rest-api-wrapper-with-rust-mk4)
 - [Different ways of reading files in Rust](https://dev.to/dandyvica/different-ways-of-reading-files-in-rust-2n30)
 - [How to write Full Stack Rust code](https://www.steadylearner.com/blog/read/How-to-write-Full-Stack-Rust-code)
 - [How to use NPM packages with Rust Frontend](https://www.steadylearner.com/blog/read/How-to-use-NPM-packages-with-Rust-Frontend)
@@ -37,6 +41,7 @@
 
 ## To learn
 
+- [nom](https://github.com/Geal/nom)
 - [async-graphql](https://github.com/async-graphql/async-graphql)
 - [rocket](https://github.com/SergioBenitez/Rocket)
 - [jsonwebtoken](https://github.com/Keats/jsonwebtoken)

@@ -1,6 +1,6 @@
 use std::{
     fs::{self, File},
-    io::{BufRead, BufReader, Read},
+    io::{BufRead, BufReader},
     str::FromStr,
 };
 
@@ -74,28 +74,6 @@ pub fn read_mmap(file_name: &str) -> Result<(), std::io::Error> {
     for s in mmap.split(|x| *x == 0x10) {
         println!("{:?}", std::str::from_utf8(&s).unwrap());
     }
-
-    Ok(())
-}
-
-// 6. （特殊）读取二进制文件
-pub fn read_png(file_name: &str) -> Result<(), std::io::Error> {
-    const BUFFER_SIZE: usize = 256;
-
-    let mut file = File::open(&file_name)?;
-
-    let mut buffer = [0; BUFFER_SIZE];
-
-    let _ = file.by_ref().take(8).read(&mut buffer)?;
-    assert_eq!(&buffer[1..4], "PNG".as_bytes());
-
-    let chunk_size = file.read_u32::<BigEndian>().unwrap();
-    let _ = file.by_ref().take(4).read(&mut buffer)?;
-    assert_eq!(&buffer[0..4], "IHDR".as_bytes());
-
-    let image_width = file.read_u32::<BigEndian>().unwrap();
-    let image_height = file.read_u32::<BigEndian>().unwrap();
-    println!("image is W={} x H={}", image_width, image_height);
 
     Ok(())
 }

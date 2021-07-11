@@ -1,8 +1,5 @@
 {
   "rust-analyzer.diagnostics.disabled": ["macro-error", "unresolved-import"],
   "git.ignoreLimitWarning": true,
-  "cSpell.words": [
-    "insertable",
-    "userdb"
-  ]
+  "cSpell.words": ["combinator", "combinators", "insertable", "userdb"]
 }
