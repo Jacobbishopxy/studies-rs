@@ -72,7 +72,7 @@ where
 }
 
 #[cfg(test)]
-mod tests {
+mod tests_step1 {
     use super::*;
 
     #[test]
