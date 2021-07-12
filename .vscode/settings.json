@@ -2,7 +2,13 @@
   "rust-analyzer.diagnostics.disabled": ["macro-error", "unresolved-import"],
   "git.ignoreLimitWarning": true,
   "cSpell.words": [
+    "actix",
+    "combinator",
+    "combinators",
+    "dissel",
     "insertable",
+    "rbatis",
+    "sqlite",
     "userdb"
   ]
 }

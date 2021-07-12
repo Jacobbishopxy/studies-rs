@@ -12,6 +12,7 @@
 - [actix-example](./actix-example/README.md)
 - [rocket-tutorial](./rocket-tutorial/README.md)
 - [file-upload-download](./file-upload-download/README.md)
+- [parser-combinators](./parser-combinators/README.md)
 
 ## To test
 
@@ -20,7 +21,6 @@
 
 ## To read
 
-- [Different ways of reading files in Rust](https://dev.to/dandyvica/different-ways-of-reading-files-in-rust-2n30)
 - [How to write Full Stack Rust code](https://www.steadylearner.com/blog/read/How-to-write-Full-Stack-Rust-code)
 - [How to use NPM packages with Rust Frontend](https://www.steadylearner.com/blog/read/How-to-use-NPM-packages-with-Rust-Frontend)
 - [Fullstack Rust with Yew](https://www.steadylearner.com/blog/read/Fullstack-Rust-with-Yew)

@@ -20,6 +20,7 @@ members = [
     "actix-mongodb",
     "file-upload-download",
     "misc",
+    "parser-combinators",
 ]
 default-members = [
     "news/service"
