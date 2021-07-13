@@ -4,10 +4,11 @@
 
 pub mod step1;
 pub mod step2;
+pub mod step3;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
-struct Element {
-    name: String,
-    attributes: Vec<(String, String)>,
-    children: Vec<Element>,
+pub struct Element {
+    pub name: String,
+    pub attributes: Vec<(String, String)>,
+    pub children: Vec<Element>,
 }
