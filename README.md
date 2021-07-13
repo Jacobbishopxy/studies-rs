@@ -37,6 +37,7 @@
 
 ## To learn
 
+- [nom](https://github.com/Geal/nom)
 - [async-graphql](https://github.com/async-graphql/async-graphql)
 - [rocket](https://github.com/SergioBenitez/Rocket)
 - [jsonwebtoken](https://github.com/Keats/jsonwebtoken)
