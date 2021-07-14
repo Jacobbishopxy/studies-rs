@@ -2,7 +2,8 @@
 
 use crate::{
     step2::{
-        any_char, element_start, identifier, left, match_literal, right, zero_or_more, Parser,
+        any_char, element_start, identifier, left, match_literal, right, space0, zero_or_more,
+        Parser,
     },
     Element,
 };
@@ -45,10 +46,6 @@ where
     }
 }
 
-pub fn element<'a>() -> impl Parser<'a, Element> {
-    either(single_element(), open_element())
-}
-
 pub fn close_element<'a>(expected_name: String) -> impl Parser<'a, String> {
     right(match_literal("</"), left(identifier, match_literal(">")))
         .pred(move |name| name == &expected_name)
@@ -62,4 +59,64 @@ pub fn parent_element<'a>() -> impl Parser<'a, Element> {
             el
         })
     })
+}
+
+pub fn whitespace_char<'a, P, A>(parser: P) -> impl Parser<'a, A>
+where
+    P: Parser<'a, A>,
+{
+    right(space0(), left(parser, space0()))
+}
+
+pub fn element<'a>() -> impl Parser<'a, Element> {
+    whitespace_char(either(single_element(), parent_element()))
+}
+
+#[cfg(test)]
+mod tests_step3 {
+    use super::*;
+
+    #[test]
+    fn xml_parser() {
+        let doc = r#"
+            <top label="Top">
+                <semi-bottom label="Bottom">
+                <middle>
+                    <bottom label="Another bottom">
+                </middle>
+            </top>
+        "#;
+
+        let parsed_doc = Element {
+            name: "top".to_string(),
+            attributes: vec![("label".to_string(), "Top".to_string())],
+            children: vec![
+                Element {
+                    name: "semi-bottom".to_string(),
+                    attributes: vec![("label".to_string(), "Bottom".to_string())],
+                    children: vec![],
+                },
+                Element {
+                    name: "middle".to_string(),
+                    attributes: vec![],
+                    children: vec![Element {
+                        name: "bottom".to_string(),
+                        attributes: vec![("label".to_string(), "Another bottom".to_string())],
+                        children: vec![],
+                    }],
+                },
+            ],
+        };
+
+        assert_eq!(Ok(("", parsed_doc)), element().parse(doc));
+    }
+
+    #[test]
+    fn mismatched_closing_tag() {
+        let doc = r#"
+        <top>
+            <bottom/>
+        </middle>"#;
+        assert_eq!(Err("</middle>"), element().parse(doc));
+    }
 }

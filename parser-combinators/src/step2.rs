@@ -200,7 +200,7 @@ pub fn space1<'a>() -> impl Parser<'a, Vec<char>> {
     one_or_more(whitespace_char())
 }
 
-pub fn space2<'a>() -> impl Parser<'a, Vec<char>> {
+pub fn space0<'a>() -> impl Parser<'a, Vec<char>> {
     zero_or_more(whitespace_char())
 }
 
