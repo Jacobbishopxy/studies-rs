@@ -16,11 +16,16 @@
 
 ## To test
 
-- [web-cors](https://github.com/actix/examples/tree/master/security/web-cors)
+- [ooxml-rs](https://github.com/zitsen/ooxml-rs)
 - [kafka-fun](https://github.com/diegopacheco/rust-playground/tree/master/kafka-fun)
 
 ## To read
 
+- [How to implement worker pools in Rust](https://kerkour.com/blog/rust-worker-pool/)
+- [Parsing in Rust with nom](https://blog.logrocket.com/parsing-in-rust-with-nom/)
+- [Build a Rust + WebAssembly frontend web app with Yew](https://blog.logrocket.com/rust-webassembly-frontend-web-app-yew/)
+- [Machine learning in Rust using Linfa](https://blog.logrocket.com/machine-learning-in-rust-using-linfa/)
+- [Untapped potential in Rust's type system](https://www.jakobmeier.ch/blogging/Untapped-Rust.html)
 - [How to write Full Stack Rust code](https://www.steadylearner.com/blog/read/How-to-write-Full-Stack-Rust-code)
 - [How to use NPM packages with Rust Frontend](https://www.steadylearner.com/blog/read/How-to-use-NPM-packages-with-Rust-Frontend)
 - [Fullstack Rust with Yew](https://www.steadylearner.com/blog/read/Fullstack-Rust-with-Yew)
@@ -29,7 +34,7 @@
 - [How to use gRPC with Rust Tonic and Postgres database with examples](https://dev.to/steadylearner/how-to-use-grpc-with-rust-tonic-and-postgres-database-with-examples-3dl7)
 - [A Web App in Rust](https://dev.to/krowemoh/series/9410)
 - [GraphQL in Rust](https://romankudryashov.com/blog/2020/12/graphql-rust/#_conclusion)
-- [Web services' config management](https://blog.logrocket.com/configuration-management-in-rust-web-services/)
+- [Configuration management in Rust web services](https://blog.logrocket.com/configuration-management-in-rust-web-services/)
 - [Web services' JSON input validation](https://blog.logrocket.com/json-input-validation-in-rust-web-services/)
 - [The Algorithms - Rust](https://github.com/TheAlgorithms/Rust)
 - [Get started making desktop apps using Rust and React](https://kent.medium.com/get-started-making-desktop-apps-using-rust-and-react-78a7e07433ce)
