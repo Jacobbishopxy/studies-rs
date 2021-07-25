@@ -13,6 +13,8 @@
 - [rocket-tutorial](./rocket-tutorial/README.md)
 - [file-upload-download](./file-upload-download/README.md)
 - [parser-combinators](./parser-combinators/README.md)
+- [mongo-example](./mongo-example/README.md)
+- [redis-example](./redis-example/README.md)
 
 ## To test
 
