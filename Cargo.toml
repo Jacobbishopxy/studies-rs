@@ -21,6 +21,7 @@ members = [
     "file-upload-download",
     "misc",
     "parser-combinators",
+    "more-rust-type",
 ]
 default-members = [
     "news/service"
