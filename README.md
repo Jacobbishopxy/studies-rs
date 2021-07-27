@@ -15,6 +15,7 @@
 - [parser-combinators](./parser-combinators/README.md)
 - [mongo-example](./mongo-example/README.md)
 - [redis-example](./redis-example/README.md)
+- [nom-example](./nom-example/README.md)
 
 ## To test
 

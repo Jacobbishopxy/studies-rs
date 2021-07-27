@@ -22,6 +22,7 @@ members = [
     "misc",
     "parser-combinators",
     "more-rust-type",
+    "nom-example",
 ]
 default-members = [
     "news/service"
