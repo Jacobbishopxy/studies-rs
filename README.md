@@ -1,5 +1,7 @@
 # Demo Rust
 
+Since `rust-analyzer` needs full scan each time opening the project, it takes a long time and disk space for saving `target` file. Hence, for VsCode user please manually uncomment the sub-project name (willing to be tested), and this is located in "rust-analyzer.linkedProjects" within `.vscode/settings.json` file.
+
 - [holodeck](./holodeck/README.md)
 - [actix_web-async_graphql_rbatis](./actix_web-async_graphql_rbatis/README.md)
 - [actix_web-dissel-sqlite](./actix_web-dissel-sqlite/README.md)

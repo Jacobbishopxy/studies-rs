@@ -1,5 +1,31 @@
 {
   "rust-analyzer.diagnostics.disabled": ["macro-error", "unresolved-import"],
+  "rust-analyzer.linkedProjects": [
+    // "holodeck/Cargo.toml",
+    // "actix_web-async_graphql_rbatis/backend/Cargo.toml",
+    // "actix_web-async_graphql_rbatis/frontend-handlebars/Cargo.toml",
+    // "actix_web-async_graphql_rbatis/frontend-yew/Cargo.toml",
+    // "actix_web-dissel-sqlite/Cargo.toml",
+    // "simple-auth-server/Cargo.toml",
+    // "yew-tutorial/Cargo.toml",
+    // "news/service/Cargo.toml",
+    // "news/contract/Cargo.toml",
+    // "news/dao/Cargo.toml",
+    // "news/migrations/Cargo.toml",
+    // "tonic-example/Cargo.toml",
+    // "solar-system/rpc/Cargo.toml",
+    // "solar-system/server/Cargo.toml",
+    // "docker-simple/Cargo.toml",
+    // "actix-example/Cargo.toml",
+    // "rocket-tutorial/Cargo.toml",
+    // "actix-mongodb/Cargo.toml",
+    // "file-upload-download/Cargo.toml",
+    // "misc/Cargo.toml",
+    // "parser-combinators/Cargo.toml",
+    "more-rust-type/Cargo.toml"
+    // "nom-example/Cargo.toml",
+  ],
+
   "git.ignoreLimitWarning": true,
   "cSpell.words": [
     "actix",
