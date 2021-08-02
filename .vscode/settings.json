@@ -1,11 +1,15 @@
 {
-  "rust-analyzer.diagnostics.disabled": ["macro-error", "unresolved-import"],
+  "rust-analyzer.diagnostics.disabled": [
+    "macro-error",
+    "unresolved-import",
+    "unresolved-macro"
+  ],
   "rust-analyzer.linkedProjects": [
     // "holodeck/Cargo.toml",
-    // "actix_web-async_graphql_rbatis/backend/Cargo.toml",
-    // "actix_web-async_graphql_rbatis/frontend-handlebars/Cargo.toml",
-    // "actix_web-async_graphql_rbatis/frontend-yew/Cargo.toml",
-    // "actix_web-dissel-sqlite/Cargo.toml",
+    // "actix-graphql-rbatis/backend/Cargo.toml",
+    // "actix-graphql-rbatis/frontend-handlebars/Cargo.toml",
+    "actix-graphql-rbatis/frontend-yew/Cargo.toml"
+    // "actix-dissel-sqlite/Cargo.toml",
     // "simple-auth-server/Cargo.toml",
     // "yew-tutorial/Cargo.toml",
     // "news/service/Cargo.toml",
@@ -22,7 +26,7 @@
     // "file-upload-download/Cargo.toml",
     // "misc/Cargo.toml",
     // "parser-combinators/Cargo.toml",
-    "more-rust-type/Cargo.toml"
+    // "more-rust-type/Cargo.toml",
     // "nom-example/Cargo.toml",
   ],
 

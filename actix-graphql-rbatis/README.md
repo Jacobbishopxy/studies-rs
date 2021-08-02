@@ -19,6 +19,13 @@
    - wasm-bindgen：wasm 与 JavaScript 交互
    - yew：wasm 框架库
 
+## 工具
+
+1. frontend-yew:
+
+   - trunk: 为 yew 打包
+   - wasm-bindgen-cli: 脚手架
+
 ## 设计
 
 1. backend:
@@ -28,7 +35,10 @@
    - [users](./src/users/mod.rs)：业务数据结构以及处理过程
    - [util](./src/util/mod.rs)：配置等
 
+1. frontend-yew
+
 ## 备注
 
 - 首次访问 `backend` 项目需新建 `.env` 配置文件，具体细节见 `./backend/.env.template`。
 - 首次访问 `frontend-yew` 项目需添加 cargo 工具：`cargo install trunk wasm-bindgen-cli`。
+- 首次使用 `trunk` 需要添加：`rustup target add wasm32-unknown-unknown`
