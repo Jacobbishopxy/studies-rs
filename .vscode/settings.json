@@ -29,7 +29,9 @@
     // "more-rust-type/Cargo.toml",
     // "nom-example/Cargo.toml",
   ],
-
+  "emmet.includeLanguages": {
+    "rust": "html"
+  },
   "git.ignoreLimitWarning": true,
   "cSpell.words": [
     "actix",
