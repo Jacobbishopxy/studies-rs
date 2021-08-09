@@ -25,7 +25,7 @@ impl Component for App {
         Self
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
         unimplemented!()
     }
 
@@ -36,12 +36,15 @@ impl Component for App {
     fn view(&self) -> Html {
         type Anchor = RouterAnchor<Route>;
 
+        let home_cls = "nav";
+
         html! {
             <>
-            <div>
+            <div class="logo-title">
+                <img src="imgs/rustgo.jpg"/>
                 { "actix-graphql-rbatis / frontend-yew" }
             </div>
-            <div>
+            <div class=home_cls>
                 <Anchor route=Route::Users>
                     { "User list" }
                 </Anchor>
@@ -55,18 +58,18 @@ impl Component for App {
                 </Anchor>
             </div>
             <main>
-                <Router<Route, ()>
-                    render = Router::render(|switch: Route| {
-                        match switch {
-                            Route::Users => html!{ <Users/> },
-                            Route::Projects => html!{ <Projects/> },
-                            Route::Home => html!{ <Home/> },
-                        }
-                    })
-                />
+                <Router<Route> render=Router::render(switch) />
             </main>
             </>
         }
+    }
+}
+
+fn switch(switch: Route) -> Html {
+    match switch {
+        Route::Users => html! { <Users/> },
+        Route::Projects => html! { <Projects/> },
+        Route::Home => html! { <Home/> },
     }
 }
 

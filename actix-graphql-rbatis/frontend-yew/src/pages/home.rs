@@ -10,7 +10,7 @@ impl Component for Home {
         Self
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
         unimplemented!()
     }
 
@@ -19,8 +19,10 @@ impl Component for Home {
     }
 
     fn view(&self) -> Html {
+        let home_cls = "home";
+
         html! {
-            <div>
+            <div class=classes!(home_cls)>
             { "Home - yellow" }
             </div>
         }

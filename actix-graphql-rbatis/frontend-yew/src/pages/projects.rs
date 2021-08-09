@@ -10,7 +10,7 @@ impl Component for Projects {
         Self
     }
 
-    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+    fn update(&mut self, _msg: Self::Message) -> ShouldRender {
         unimplemented!()
     }
 
@@ -20,7 +20,7 @@ impl Component for Projects {
 
     fn view(&self) -> Html {
         html! {
-            <div>
+            <div calss=classes!("projects")>
             {"Project list - green"}
             </div>
         }
