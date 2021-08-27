@@ -5,6 +5,8 @@ FROM rust:latest AS builder
 
 RUN update-ca-certificates
 
+COPY config ~/.cargo/
+
 # Create appuser
 ENV USER=docker
 ENV UID=10001
