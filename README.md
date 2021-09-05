@@ -1,6 +1,6 @@
 # Demo Rust
 
-Since `rust-analyzer` needs full scan each time opening the project, it takes a long time and disk space for saving `target` file. Hence, for VsCode user please manually uncomment the sub-project name (willing to be tested), and this is located in "rust-analyzer.linkedProjects" within `.vscode/settings.json` file.
+Since `rust-analyzer` needs full scan each time opening the project, it takes a long time and disk space for saving `target` file. Hence, for VsCode user please manually uncomment the sub-project name (willing to be tested), and this setting is in "rust-analyzer.linkedProjects" field which locates in `.vscode/settings.json` file.
 
 - [holodeck](./holodeck/README.md)
 - [actix_web-async_graphql_rbatis](./actix_web-async_graphql_rbatis/README.md)
@@ -26,8 +26,11 @@ Since `rust-analyzer` needs full scan each time opening the project, it takes a 
 
 ## To read
 
-- [How to implement worker pools in Rust](https://kerkour.com/blog/rust-worker-pool/)
-- [Parsing in Rust with nom](https://blog.logrocket.com/parsing-in-rust-with-nom/)
+- [First steps with Rust declarative macros!](https://dev.to/rogertorres/first-steps-with-rust-declarative-macros-1f8m)
+- [Macros in Rust: A tutorial with examples](https://blog.logrocket.com/macros-in-rust-a-tutorial-with-examples/)
+- [Procedural Macros: A simple derive macro](https://blog.turbo.fish/proc-macro-simple-derive/)
+- [15k inserts/s with Rust and SQLite](https://kerkour.com/blog/high-performance-rust-with-sqlite/)
+- [How to deploy Rust on Heroku (with Docker)](https://kerkour.com/blog/deploy-rust-on-heroku-with-docker/)
 - [Build a Rust + WebAssembly frontend web app with Yew](https://blog.logrocket.com/rust-webassembly-frontend-web-app-yew/)
 - [Machine learning in Rust using Linfa](https://blog.logrocket.com/machine-learning-in-rust-using-linfa/)
 - [Untapped potential in Rust's type system](https://www.jakobmeier.ch/blogging/Untapped-Rust.html)
@@ -52,12 +55,15 @@ Since `rust-analyzer` needs full scan each time opening the project, it takes a 
 - [rocket](https://github.com/SergioBenitez/Rocket)
 - [jsonwebtoken](https://github.com/Keats/jsonwebtoken)
 - [rbatis](https://github.com/rbatis/rbatis)
+- [redis-rs](https://github.com/mitsuhiko/redis-rs)
 - [rdkafka](https://github.com/fede1024/rust-rdkafka)
 - [algorithms](https://github.com/EbTech/rust-algorithms)
 - [yew](https://github.com/yewstack/yew)
 - [yewprint](https://github.com/cecton/yewprint)
 
-## Notes
+## Little Notes
+
+String conversion:
 
 ```n
 &str    -> String--| String::from(s) or s.to_string() or s.to_owned()
