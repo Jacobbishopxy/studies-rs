@@ -1,4 +1,4 @@
-# Demo Rust
+# Studies RS
 
 Since `rust-analyzer` needs full scan each time opening the project, it takes a long time and disk space for saving `target` file. Hence, for VsCode user please manually uncomment the sub-project name (willing to be tested), and this setting is in "rust-analyzer.linkedProjects" field which locates in `.vscode/settings.json` file.
 
