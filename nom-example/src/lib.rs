@@ -2,10 +2,10 @@ use nom::branch::alt;
 use nom::bytes::complete::{tag, tag_no_case, take};
 use nom::character::complete::{alpha1, alphanumeric1, one_of};
 use nom::combinator::opt;
-use nom::error::{context, ErrorKind, VerboseError, VerboseErrorKind};
+use nom::error::{context, ErrorKind, VerboseError};
 use nom::multi::{count, many0, many1, many_m_n};
 use nom::sequence::{preceded, separated_pair, terminated, tuple};
-use nom::{separated_pair, AsChar, Err as NomErr, IResult, InputTakeAtPosition};
+use nom::{AsChar, Err as NomErr, IResult, InputTakeAtPosition};
 
 pub type Res<T, U> = IResult<T, U, VerboseError<T>>;
 
