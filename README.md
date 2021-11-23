@@ -18,6 +18,7 @@ Since `rust-analyzer` needs full scan each time opening the project, it takes a 
 - [mongo-example](./mongo-example/README.md)
 - [redis-example](./redis-example/README.md)
 - [nom-example](./nom-example/README.md)
+- [telegram-bot](./telegram-bot/README.md)
 
 ## To test
 
