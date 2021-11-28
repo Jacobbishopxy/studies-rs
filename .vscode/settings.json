@@ -28,7 +28,8 @@
 		// "parser-combinators/Cargo.toml",
 		// "more-rust-type/Cargo.toml",
 		// "nom-example/Cargo.toml",
-		"telegram-bot/Cargo.toml"
+		// "telegram-bot/Cargo.toml",
+		"mongodb-redis/Cargo.toml"
 	],
 	"emmet.includeLanguages": {
 		"rust": "html"

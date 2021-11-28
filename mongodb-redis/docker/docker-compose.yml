@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: $MONGODB_USERNAME
+      MONGO_INITDB_ROOT_PASSWORD: $MONGODB_PASSWORD
+      MONGO_INITDB_DATABASE: solar_system_info
+    ports:
+      - 27017:27017
+
+  mongodb-seed:
+    image: mongo
+    container_name: mongodb-seed
+    depends_on:
+      - mongodb
+    volumes:
+      - ./mongodb_init.json:/mongodb_init.json
+    links:
+      - mongodb
+    command:
+      mongoimport --host mongodb --db solar_system_info --collection planets --authenticationDatabase admin --username $MONGODB_USERNAME --password $MONGODB_PASSWORD --drop --jsonArray --file mongodb_init.json
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - 6379:6379
