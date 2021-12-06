@@ -1,5 +1,10 @@
 //!
 
+mod db;
+mod dto;
+mod errors;
+mod model;
+
 use mongodb::Client as MongoClient;
 use redis::Client as RedisClient;
 use std::{env, sync::Arc};
