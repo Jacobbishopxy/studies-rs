@@ -1,14 +1,16 @@
 //!
 
+mod broadcaster;
 mod db;
 mod dto;
 mod errors;
 mod model;
+mod rds;
+mod services;
 
 use mongodb::Client as MongoClient;
 use redis::Client as RedisClient;
 use std::{env, sync::Arc};
-// use redis::
 
 use log::info;
 
