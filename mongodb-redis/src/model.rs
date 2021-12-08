@@ -1,7 +1,7 @@
 use std::str::FromStr;
 
 use chrono::Utc;
-use mongodb::bson::{oid::ObjectId, DateTime};
+use mongodb::bson::{oid::ObjectId, DateTime, Document};
 use serde::{Deserialize, Serialize};
 
 use crate::dto::{PlanetDto, SatelliteDto};
@@ -28,6 +28,12 @@ pub enum PlanetType {
 pub struct Satellite {
     pub name: String,
     pub first_spacecraft_landing_date: Option<DateTime>,
+}
+
+impl From<&Planet> for Document {
+    fn from(source: &Planet) -> Self {
+        mongodb::bson::to_document(source).expect("Can't convert a planet to Document")
+    }
 }
 
 impl From<PlanetDto> for Planet {

@@ -1,8 +1,9 @@
 use mongodb::{
-    bson::{doc, oid::ObjectId},
+    bson::{doc, oid::ObjectId, Document},
     error::Error as MongoError,
     Client,
 };
+use rust_embed::RustEmbed;
 use tokio_stream::StreamExt;
 
 use crate::{
@@ -51,7 +52,7 @@ impl MongoDbClient {
         Ok(result)
     }
 
-    // 根据ID读取单条数据
+    // 根据 ID 读取单条数据
     pub async fn get_planet(&self, id: ObjectId) -> Result<Planet, CustomError> {
         let collection = self.get_planets_collection();
 
@@ -64,8 +65,52 @@ impl MongoDbClient {
             })
     }
 
+    // 根据 ID 更新单条数据
+    pub async fn update_planet(&self, id: ObjectId, planet: Planet) -> Result<Planet, CustomError> {
+        let collection = self.get_planets_collection();
+
+        let query = doc! {"_id": &id};
+        let update = doc! {
+            "$set": Document::from(&planet)
+        };
+        let _update_result = collection.update_one(query.clone(), update, None).await?;
+
+        collection
+            .find_one(query, None)
+            .await?
+            .ok_or(CustomError::NotFound {
+                message: format!("Can't find a planet by id: {}", &id),
+            })
+    }
+
+    // 根据 ID 删除单条数据
+    pub async fn delete_planet(&self, id: ObjectId) -> Result<(), CustomError> {
+        let collection = self.get_planets_collection();
+
+        let filter = doc! {"_id": &id};
+        let _delete_result =
+            collection
+                .find_one_and_delete(filter, None)
+                .await?
+                .ok_or(CustomError::NotFound {
+                    message: format!("Can't find a planet by id: {}", &id),
+                })?;
+
+        Ok(())
+    }
+
     // 获取数据库下的 collection 对象
     fn get_planets_collection(&self) -> mongodb::Collection<Planet> {
         self.client.database(DB_NAME).collection(COLLECTION_NAME)
     }
+}
+
+#[derive(RustEmbed)]
+#[folder = "images"]
+struct Asset;
+
+pub async fn get_image_of_planet(planet_name: &str) -> Vec<u8> {
+    let filename = format!("{}.jpg", planet_name.to_lowercase());
+    let image = Asset::get(&filename).expect("Failed to open image");
+    image.data.to_vec()
 }
