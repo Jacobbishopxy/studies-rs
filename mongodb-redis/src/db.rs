@@ -52,6 +52,20 @@ impl MongoDbClient {
         Ok(result)
     }
 
+    // 创建一个新的数据
+    pub async fn create_planet(&self, planet: Planet) -> Result<Planet, CustomError> {
+        let collection = self.get_planets_collection();
+
+        let insert_result = collection.insert_one(planet, None).await?;
+        let filter = doc! {"_id": &insert_result.inserted_id};
+        collection
+            .find_one(filter, None)
+            .await?
+            .ok_or(CustomError::NotFound {
+                message: "Planet not found".to_string(),
+            })
+    }
+
     // 根据 ID 读取单条数据
     pub async fn get_planet(&self, id: ObjectId) -> Result<Planet, CustomError> {
         let collection = self.get_planets_collection();

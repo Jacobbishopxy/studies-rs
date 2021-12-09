@@ -10,6 +10,7 @@ use redis::{aio::ConnectionManager, AsyncCommands, Client as RedisClient, Value}
 
 use crate::{
     db::MongoDbClient,
+    dto::PlanetMessage,
     errors::CustomError,
     model::{Planet, PlanetType},
 };
@@ -46,6 +47,20 @@ impl PlanetService {
         planet_type: Option<PlanetType>,
     ) -> Result<Vec<Planet>, CustomError> {
         self.mongodb_client.get_planets(planet_type).await
+    }
+
+    // 创建一个 planet
+    pub async fn create_planet(&self, planet: Planet) -> Result<Planet, CustomError> {
+        let planet = self.mongodb_client.create_planet(planet).await?;
+        self.redis_connection_manager
+            .clone()
+            .publish(
+                NEW_PLANETS_CHANNEL_NAME,
+                serde_json::to_string(&PlanetMessage::from(&planet))?,
+            )
+            .await?;
+
+        Ok(planet)
     }
 
     // 根据 id 获取 planet, 有缓存情况下直接从缓存中获取，没有缓存情况下从数据库中获取并写入缓存
