@@ -49,19 +49,21 @@ Since `rust-analyzer` needs full scan each time opening the project, it takes a 
 - [The Algorithms - Rust](https://github.com/TheAlgorithms/Rust)
 - [Get started making desktop apps using Rust and React](https://kent.medium.com/get-started-making-desktop-apps-using-rust-and-react-78a7e07433ce)
 - [MoonZoon Dev News Series](https://dev.to/martinkavik/series/11511)
+- [Calling Rust from Python using PyO3](https://saidvandeklundert.net/learn/2021-11-18-calling-rust-from-python-using-pyo3/)
 
 ## To learn
 
 - [nom](https://github.com/Geal/nom)
 - [async-graphql](https://github.com/async-graphql/async-graphql)
-- [rocket](https://github.com/SergioBenitez/Rocket)
 - [jsonwebtoken](https://github.com/Keats/jsonwebtoken)
 - [rbatis](https://github.com/rbatis/rbatis)
-- [redis-rs](https://github.com/mitsuhiko/redis-rs)
 - [rdkafka](https://github.com/fede1024/rust-rdkafka)
 - [algorithms](https://github.com/EbTech/rust-algorithms)
 - [yew](https://github.com/yewstack/yew)
 - [yewprint](https://github.com/cecton/yewprint)
+- [redis-rs](https://github.com/mitsuhiko/redis-rs)
+- [bson-rust](https://github.com/mongodb/bson-rust)
+- [mongo-rust-driver](https://github.com/mongodb/mongo-rust-driver)
 
 ## Little Notes
 
