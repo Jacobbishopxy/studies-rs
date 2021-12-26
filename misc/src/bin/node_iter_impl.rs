@@ -11,13 +11,13 @@ fn main() {
 }
 
 #[derive(Debug, PartialEq)]
-enum Node<Item> {
+pub enum Node<Item> {
     Leaf(Item),
     Children(Vec<Node<Item>>),
 }
 
 impl<It> Node<It> {
-    fn traverse(&self, f: impl Fn(&It)) {
+    pub fn traverse(&self, f: impl Fn(&It)) {
         match self {
             Node::Leaf(item) => {
                 f(item);
@@ -45,7 +45,7 @@ impl<It> Node<It> {
     }
 }
 
-struct NodeIter<'a, It> {
+pub struct NodeIter<'a, It> {
     children: &'a [Node<It>],
     parent: Option<Box<NodeIter<'a, It>>>,
 }
@@ -102,7 +102,7 @@ impl<'a, It> IntoIterator for &'a Node<It> {
     }
 }
 
-struct NodeIntoIter<It> {
+pub struct NodeIntoIter<It> {
     children: VecDeque<Node<It>>,
     parent: Option<Box<NodeIntoIter<It>>>,
 }
@@ -160,7 +160,7 @@ impl<It> IntoIterator for Node<It> {
     }
 }
 
-struct NodeIterMut<'a, It> {
+pub struct NodeIterMut<'a, It> {
     children: &'a mut [Node<It>],
     parent: Option<Box<NodeIterMut<'a, It>>>,
 }

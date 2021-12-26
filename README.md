@@ -20,6 +20,7 @@ Since `rust-analyzer` needs full scan each time opening the project, it takes a 
 - [nom-example](./nom-example/README.md)
 - [telegram-bot](./telegram-bot/README.md)
 - [mongodb-redis](./mongodb-redis/README.md)
+- [yew-getting-started](./yew-getting-started/README.md): new version 0.19, official tutorial
 
 ## To test
 

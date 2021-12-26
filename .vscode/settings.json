@@ -30,6 +30,7 @@
 		// "nom-example/Cargo.toml",
 		// "telegram-bot/Cargo.toml",
 		// "mongodb-redis/Cargo.toml",
+		"yew-getting-started/Cargo.toml"
 	],
 	"emmet.includeLanguages": {
 		"rust": "html"
@@ -42,6 +43,7 @@
 		"dissel",
 		"insertable",
 		"rbatis",
+		"rustup",
 		"sqlite",
 		"userdb"
 	]
