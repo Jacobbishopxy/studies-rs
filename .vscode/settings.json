@@ -4,6 +4,7 @@
 		"unresolved-import",
 		"unresolved-macro"
 	],
+	"rust-analyzer.experimental.procAttrMacros": true,
 	"rust-analyzer.linkedProjects": [
 		// "holodeck/Cargo.toml",
 		// "actix-graphql-rbatis/backend/Cargo.toml",
@@ -30,7 +31,8 @@
 		// "nom-example/Cargo.toml",
 		// "telegram-bot/Cargo.toml",
 		// "mongodb-redis/Cargo.toml",
-		"yew-getting-started/Cargo.toml"
+		"yew-getting-started/Cargo.toml",
+		"pyo3-example/Cargo.toml"
 	],
 	"emmet.includeLanguages": {
 		"rust": "html"
