@@ -2,8 +2,9 @@
 	"rust-analyzer.diagnostics.disabled": [
 		"macro-error",
 		"unresolved-import",
-		"unresolved-macro"
+		"unresolved-macro-call"
 	],
+	"rust-analyzer.procMacro.enable": false,
 	"rust-analyzer.experimental.procAttrMacros": true,
 	"rust-analyzer.linkedProjects": [
 		// "holodeck/Cargo.toml",
@@ -44,6 +45,8 @@
 		"combinators",
 		"dissel",
 		"insertable",
+		"maturin",
+		"pydantic",
 		"rbatis",
 		"rustup",
 		"sqlite",
