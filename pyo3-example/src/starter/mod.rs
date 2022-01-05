@@ -1,3 +1,0 @@
-//! Starter
-
-mod rfp;

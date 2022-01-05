@@ -51,5 +51,6 @@
 		"rustup",
 		"sqlite",
 		"userdb"
-	]
+	],
+	"python.formatting.provider": "black"
 }

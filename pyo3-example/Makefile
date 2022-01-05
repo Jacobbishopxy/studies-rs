@@ -1,10 +1,17 @@
 
 
-pyenv:
-	conda activate py310
+deps:
+	pip install maturin && pip install pydantic
 
-dev:
+build:
 	maturin develop
 
-run:
-	python pyo3.py
+check:
+	pip show pyo3-example
+
+test_sync:
+	python pyo3_sync.py
+
+test_async:
+	python pyo3_async.py
+

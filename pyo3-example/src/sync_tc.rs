@@ -6,12 +6,12 @@ use pyo3::prelude::*;
 use serde::{Deserialize, Serialize};
 
 #[pyfunction]
-fn multiply(a: isize, b: isize) -> PyResult<isize> {
+pub fn multiply(a: isize, b: isize) -> PyResult<isize> {
     Ok(a * b)
 }
 
 #[pyfunction]
-fn get_fibonacci(number: isize) -> PyResult<u128> {
+pub fn get_fibonacci(number: isize) -> PyResult<u128> {
     if number == 1 {
         return Ok(1);
     } else if number == 2 {
@@ -30,19 +30,19 @@ fn get_fibonacci(number: isize) -> PyResult<u128> {
 }
 
 #[pyfunction]
-fn list_sum(a: Vec<isize>) -> PyResult<isize> {
+pub fn list_sum(a: Vec<isize>) -> PyResult<isize> {
     Ok(a.iter().sum())
 }
 
 #[pyfunction]
-fn dict_printer(hm: HashMap<String, String>) {
+pub fn dict_printer(hm: HashMap<String, String>) {
     for (key, value) in hm {
         println!("{} -> {}", key, value);
     }
 }
 
 #[pyfunction]
-fn word_printer(mut word: String, n: isize, reverse: bool, uppercase: bool) {
+pub fn word_printer(mut word: String, n: isize, reverse: bool, uppercase: bool) {
     if reverse {
         let mut reversed_word = String::new();
         for c in word.chars().rev() {
@@ -87,13 +87,13 @@ impl RustStruct {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-struct Human {
+pub struct Human {
     name: String,
     age: u8,
 }
 
 #[pyfunction]
-fn human_says_hi(human: String) {
+pub fn human_says_hi(human: String) {
     println!("{:?}", human);
     let human: Human = serde_json::from_str(&human).unwrap();
 
@@ -101,17 +101,4 @@ fn human_says_hi(human: String) {
         "Now we can work with the struct: \n {:#?}.\n {} is {} year old.",
         human, human.name, human.age
     );
-}
-
-#[pymodule]
-fn rust(_py: Python, m: &PyModule) -> PyResult<()> {
-    m.add_function(wrap_pyfunction!(multiply, m)?)?;
-    m.add_function(wrap_pyfunction!(get_fibonacci, m)?)?;
-    m.add_function(wrap_pyfunction!(list_sum, m)?)?;
-    m.add_function(wrap_pyfunction!(dict_printer, m)?)?;
-    m.add_function(wrap_pyfunction!(word_printer, m)?)?;
-    m.add_class::<RustStruct>()?;
-
-    m.add_function(wrap_pyfunction!(human_says_hi, m)?)?;
-    Ok(())
 }

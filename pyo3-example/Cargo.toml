@@ -4,10 +4,12 @@ version = "0.1.0"
 edition = "2021"
 
 [lib]
-name = "rust"
+name = "pyo3_starter"
 crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.15", features = ["extension-module"] }
+pyo3-asyncio = { version = "0", features = ["tokio-runtime"] }
 serde = { version = "1", features = ["derive"]}
 serde_json = "1.0.73"
+tokio = "1"
