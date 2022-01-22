@@ -33,7 +33,7 @@ fn main() {
         data: Rc::new(RcPointer),
     };
 
-    let foo = my_data_structure.data;
+    let x = my_data_structure.data;
 
-    println!("{:?}", foo);
+    println!("{:?}", x);
 }

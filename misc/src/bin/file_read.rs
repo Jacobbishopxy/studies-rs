@@ -72,7 +72,7 @@ pub fn read_mmap(file_name: &str) -> Result<(), std::io::Error> {
     let mmap = unsafe { Mmap::map(&file)? };
 
     for s in mmap.split(|x| *x == 0x10) {
-        println!("{:?}", std::str::from_utf8(&s).unwrap());
+        println!("{:?}", std::str::from_utf8(s).unwrap());
     }
 
     Ok(())
