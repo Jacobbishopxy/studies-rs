@@ -32,8 +32,9 @@
 		// "nom-example/Cargo.toml",
 		// "telegram-bot/Cargo.toml",
 		// "mongodb-redis/Cargo.toml",
+		// "pyo3-example/Cargo.toml",
 		"yew-getting-started/Cargo.toml",
-		"pyo3-example/Cargo.toml"
+		"procedural-macro-101/Cargo.toml"
 	],
 	"emmet.includeLanguages": {
 		"rust": "html"

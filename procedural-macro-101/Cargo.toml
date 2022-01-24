@@ -1,0 +1,11 @@
+[package]
+name = "procedural-macro-101"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+quote = "1"
+syn = "1"
+
+[lib]
+proc-macro = true

@@ -30,6 +30,9 @@ Since `rust-analyzer` needs full scan each time opening the project, it takes a 
 
 ## To read
 
+- [Procedural macro in rust](https://dev.to/naufraghi/procedural-macro-in-rust-101-k3f#modern-rust-raw-combinations-endraw-)
+- [How Bevy uses Rust traits for labeling](https://deterministic.space/bevy-labels.html)
+- [Actors with Tokio](https://ryhl.io/blog/actors-with-tokio/)
 - [Writing a prometheus exporter in rust from idea to grafana chart](https://mateusfreira.github.io/@mateusfreira-writing-a-prometheus-exporter-in-rust-from-idea-to-grafana-chart/)
 - [First steps with Rust declarative macros!](https://dev.to/rogertorres/first-steps-with-rust-declarative-macros-1f8m)
 - [Macros in Rust: A tutorial with examples](https://blog.logrocket.com/macros-in-rust-a-tutorial-with-examples/)
