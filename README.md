@@ -22,6 +22,7 @@ Since `rust-analyzer` needs full scan each time opening the project, it takes a 
 - [mongodb-redis](./mongodb-redis/README.md)
 - [yew-getting-started](./yew-getting-started/README.md): new version 0.19, official tutorial
 - [pyo3-example](./pyo3-example/README.md)
+- [procedural-macro-101](./procedural-macro-101/README.md)
 
 ## To test
 

@@ -3,20 +3,35 @@
 version = 3
 
 [[package]]
+name = "example"
+version = "0.1.0"
+dependencies = [
+ "heapsize",
+]
+
+[[package]]
+name = "heapsize"
+version = "0.1.0"
+dependencies = [
+ "heapsize_derive",
+]
+
+[[package]]
+name = "heapsize_derive"
+version = "0.1.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "proc-macro2"
 version = "1.0.36"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c7342d5883fbccae1cc37a2353b09c87c9b0f3afd73f5fb9bba687a1f733b029"
 dependencies = [
  "unicode-xid",
-]
-
-[[package]]
-name = "procedural-macro-101"
-version = "0.1.0"
-dependencies = [
- "quote",
- "syn",
 ]
 
 [[package]]

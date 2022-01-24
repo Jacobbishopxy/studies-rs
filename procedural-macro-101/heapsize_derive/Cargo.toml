@@ -1,9 +1,10 @@
 [package]
-name = "procedural-macro-101"
+name = "heapsize_derive"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+proc-macro2 = "1"
 quote = "1"
 syn = "1"
 

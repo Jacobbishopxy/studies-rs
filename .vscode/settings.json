@@ -34,7 +34,9 @@
 		// "mongodb-redis/Cargo.toml",
 		// "pyo3-example/Cargo.toml",
 		"yew-getting-started/Cargo.toml",
-		"procedural-macro-101/Cargo.toml"
+		"procedural-macro-101/heapsize/Cargo.toml",
+		"procedural-macro-101/heapsize_derive/Cargo.toml",
+		"procedural-macro-101/example/Cargo.toml"
 	],
 	"emmet.includeLanguages": {
 		"rust": "html"
