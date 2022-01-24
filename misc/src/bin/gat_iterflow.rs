@@ -66,15 +66,15 @@ fn main() {
     let ot = Some(233);
 
     let f1 = |i: i32| format!("> {} <", i);
-    let f2 = |i: Option<i32>| Some(i);
+    let f2 = Some;
 
-    let foo = OptionType::fmap(ot, f1);
-    let bar = OptionType::pure(ot);
-    let qux = OptionType::apply(ot, Some(f1));
-    let quz = OptionType::pure(ot).and_then(f2);
+    let a = OptionType::fmap(ot, f1);
+    let b = OptionType::pure(ot);
+    let c = OptionType::apply(ot, Some(f1));
+    let d = OptionType::pure(ot).and_then(f2);
 
-    println!("{:?}", foo);
-    println!("{:?}", bar);
-    println!("{:?}", qux);
-    println!("{:?}", quz);
+    println!("{:?}", a);
+    println!("{:?}", b);
+    println!("{:?}", c);
+    println!("{:?}", d);
 }
