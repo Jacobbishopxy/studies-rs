@@ -17,12 +17,15 @@ struct Opt {
     /// 日志级别
     #[clap(short = 'l', long = "log", default_value = "debug")]
     log_level: String,
+
     /// 监听地址
     #[clap(short = 'a', long = "addr", default_value = "::1")]
     addr: String,
+
     /// 监听端口
     #[clap(short = 'p', long = "port", default_value = "8080")]
     port: u16,
+
     /// 打包后的前端文件位置
     #[clap(short = 's', long = "static-dir", default_value = "../dist")]
     static_dir: String,
@@ -43,6 +46,7 @@ async fn main() {
     // 启用打印
     tracing_subscriber::fmt::init();
 
+    // SpaRouter 用于单页面应用
     let app = Router::new()
         .route("/api/hello", get(hello))
         .merge(SpaRouter::new("/assets", opt.static_dir))
