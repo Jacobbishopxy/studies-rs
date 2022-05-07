@@ -53,6 +53,7 @@
 		"maturin",
 		"pydantic",
 		"rbatis",
+		"Routable",
 		"rustup",
 		"sqlite",
 		"userdb"
