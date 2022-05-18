@@ -36,6 +36,12 @@
 		// "procedural-macro-101/heapsize/Cargo.toml",
 		// "procedural-macro-101/heapsize_derive/Cargo.toml",
 		// "procedural-macro-101/example/Cargo.toml",
+		// "yew-getting-started/Cargo.toml",
+		// "procedural-macro-101/heapsize/Cargo.toml",
+		// "procedural-macro-101/heapsize_derive/Cargo.toml",
+		// "procedural-macro-101/example/Cargo.toml",
+		"web-wasm-demo/server/Cargo.toml",
+		"web-wasm-demo/frontend/Cargo.toml",
 		"actix-upload-download/Cargo.toml"
 	],
 	"emmet.includeLanguages": {
@@ -51,6 +57,7 @@
 		"maturin",
 		"pydantic",
 		"rbatis",
+		"Routable",
 		"rustup",
 		"sqlite",
 		"userdb"
