@@ -12,10 +12,12 @@ use std::{
 use actix_multipart::Multipart;
 use actix_web::{
     http::{header::ContentType, StatusCode},
+    middleware::Logger,
     web, App, HttpResponse, HttpServer, ResponseError, Result,
 };
 use derive_more::{Display, Error};
 use futures::{StreamExt, TryStreamExt};
+use log::{info, LevelFilter};
 use serde::{Deserialize, Serialize};
 
 const FILE_DIR: &str = "./tmp";
@@ -73,6 +75,8 @@ async fn upload(mut payload: Multipart) -> Result<HttpResponse> {
         // 只处理 Multipart 数据中 "file" 作为 key 的数据
         if let Some("file") = content_type.get_name() {
             let filename = content_type.get_filename().unwrap_or("unknown");
+            info!("uploading: {}", filename);
+
             let f_n = filename.to_string();
 
             let filepath = format!("{}/{}", FILE_DIR, sanitize_filename::sanitize(filename));
@@ -105,6 +109,8 @@ async fn upload(mut payload: Multipart) -> Result<HttpResponse> {
 }
 
 async fn download(info: web::Path<DownloadRequest>) -> Result<HttpResponse> {
+    info!("downloading: {}", info.filename);
+
     let path = format!("{}/{}", FILE_DIR, info.filename);
     let p = path.clone();
     if !Path::new(&path).exists() {
@@ -124,15 +130,29 @@ async fn download(info: web::Path<DownloadRequest>) -> Result<HttpResponse> {
 }
 
 #[actix_web::main]
-async fn main() -> Result<(), std::io::Error> {
+async fn main() -> std::io::Result<()> {
+    std::env::set_var(
+        "RUST_LOG",
+        "actix_server=info,actix_web=info,actix_upload_download=info",
+    );
+    std::env::set_var("RUST_BACKTRACE", "1");
+    env_logger::init();
+    log::set_max_level(LevelFilter::Debug);
+
+    let bind = ("127.0.0.1", 8080);
+    info!("Starting server...");
+    info!("Starting server on {:?}", &bind);
+
     HttpServer::new(|| {
-        App::new().service(
+        let logger = Logger::default();
+
+        App::new().wrap(logger).service(
             web::scope("/api")
                 .route("/files", web::post().to(upload))
                 .route("/files/{filename}", web::get().to(download)),
         )
     })
-    .bind(("127.0.0.1", 8080))?
+    .bind(bind)?
     .run()
     .await
 }
