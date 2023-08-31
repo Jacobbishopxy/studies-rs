@@ -1,10 +1,4 @@
 {
-	"rust-analyzer.diagnostics.disabled": [
-		"macro-error",
-		"unresolved-import",
-		"unresolved-macro-call"
-	],
-	"rust-analyzer.procMacro.enable": false,
 	"rust-analyzer.linkedProjects": [
 		// "holodeck/Cargo.toml",
 		// "actix-graphql-rbatis/backend/Cargo.toml",
@@ -32,7 +26,7 @@
 		// "telegram-bot/Cargo.toml",
 		// "mongodb-redis/Cargo.toml",
 		// "pyo3-example/Cargo.toml",
-		"yew-getting-started/Cargo.toml",
+		// "yew-getting-started/Cargo.toml",
 		// "procedural-macro-101/heapsize/Cargo.toml",
 		// "procedural-macro-101/heapsize_derive/Cargo.toml",
 		// "procedural-macro-101/example/Cargo.toml",
@@ -40,9 +34,10 @@
 		// "procedural-macro-101/heapsize/Cargo.toml",
 		// "procedural-macro-101/heapsize_derive/Cargo.toml",
 		// "procedural-macro-101/example/Cargo.toml",
-		"web-wasm-demo/server/Cargo.toml",
-		"web-wasm-demo/frontend/Cargo.toml",
-		"actix-upload-download/Cargo.toml"
+		// "web-wasm-demo/server/Cargo.toml",
+		// "web-wasm-demo/frontend/Cargo.toml",
+		// "actix-upload-download/Cargo.toml",
+		"tonic-web-react/tonic-server/Cargo.toml"
 	],
 	"emmet.includeLanguages": {
 		"rust": "html"
@@ -62,6 +57,4 @@
 		"sqlite",
 		"userdb"
 	],
-	"python.formatting.provider": "black",
-	"rust-analyzer.procMacro.attributes.enable": true
 }

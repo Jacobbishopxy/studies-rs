@@ -1,0 +1,23 @@
+[package]
+name = "tonic-server"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+http = "0"
+prost = "0"
+prost-types = "0"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+tonic = "0"
+tonic-web = "0"
+tower-http = { version = "0.4.3", features = ["cors"] }
+uuid = { version = "1", features = ["v4"] }
+
+[build-dependencies]
+tonic-build = "0"
+
+[dev-dependencies]
+hyper = "0.14.27"
+tower = "0.4.13"

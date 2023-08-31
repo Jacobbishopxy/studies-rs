@@ -25,6 +25,7 @@ Since `rust-analyzer` needs full scan each time opening the project, it takes a 
 - [procedural-macro-101](./procedural-macro-101/README.md)
 - [web-wasm-demo](./web-wasm-demo/README.md)
 - [actix-upload-download](./actix-upload-download/README.md)
+- [tonic-web-react](./tonic-web-react/README.md)
 
 ## To test
 
