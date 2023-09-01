@@ -149,7 +149,7 @@ impl Greeter for MyGreeter {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // let addr = "[::1]:3000".parse()?;
-    let addr = "127.0.0.1:3000".parse()?;
+    let addr = "127.0.0.1:2999".parse()?;
 
     let page = MyPage::default();
     let page = PageServer::new(page);

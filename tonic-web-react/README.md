@@ -19,6 +19,23 @@ grpcurl -d '{"name": "jacob"}' -plaintext -import-path proto -proto helloworld.p
 grpcurl -d '{"name": "home"}' -plaintext -import-path proto -proto page.proto 127.0.0.1:3000 page.Page/GetPage
 ```
 
+## Web
+
+1. Create frontend project: `yarn create react-app react-web --template typescript && cd react-web`
+
+1. Add protoc js plugin `yarn add --dev protoc-gen-grpc-web`
+
+1. Add dependencies: `yarn add google-protobuf grpc-web`
+
+1. generate code (notice here we used `--plugin=protoc-gen-grpc-web` with specified location):
+
+    ```sh
+    protoc -I=../proto/ page.proto \\
+     --grpc-web_out=import_style=typescript,mode=grpcweb:./src \\
+     --js_out=import_style=commonjs,binary:./src \\
+     --plugin=protoc-gen-grpc-web=./node_modules/.bin/protoc-gen-grpc-web
+    ```
+
 ## Todo
 
 - test case in Rust
